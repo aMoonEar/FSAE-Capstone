@@ -16,8 +16,6 @@ function DesignCode(driverWeight, steeringStiffness, corneringRadius)
     massOfVehicle = massOfVehicleWIthoutDriver + driverWeight;
     
     
-    [totalMass, COMFromGroundX, COMFromGroundY, COMFromGroundZ, RearTireToCOM, FrontTireToCOMs] = calcCenterOfMass(driverWeight);
-    
     
     default_diameter = 0.5; %Units (mm). Sets an initial diameter value.
     strength_al = 31; %Units (MPa). Assuming 1100-0 Al alloy, 
