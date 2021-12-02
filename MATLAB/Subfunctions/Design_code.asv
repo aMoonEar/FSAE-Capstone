@@ -12,9 +12,9 @@ function DesignCode(driverWeight, steeringStiffness, corneringRadius)
     %                   Constants
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    massOfVehicleWIthoutDriver = 191.885; %Units (kg)
-    massOfVehicle = massOfVehicleWIthoutDriver + driverWeight;
+    gravity = 0
     
+    [totalMass, RearTireToCOM, FrontTireToCOM, COMFromGroundX, COMFromGroundY, COMFromGroundZ, LengthCOMToFrontWing, LengthCOMToRearWing, HeightCOMToFrontWing, HeightCOMToRearWing, LengthToRightWheelCOM, LengthToLeftWheelCOM] = calcCenterOfMass(driverWeight);
     
     
     default_diameter = 0.5; %Units (mm). Sets an initial diameter value.

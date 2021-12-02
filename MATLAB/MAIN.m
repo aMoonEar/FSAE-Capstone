@@ -119,40 +119,46 @@ if(isempty(handles))
 else
     %Get the design parameters from the interface (DO NOT PERFORM ANY DESIGN CALCULATIONS HERE)
 
-   
-
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %                           Range Checking
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %Perform basic range checking (for those that can go out of range)
-    if isnan(shaft_length) || (shaft_length <=0) || (shaft_length > 50)
-        msgbox('The shaft length specified is not an acceptable value. Please correct it.','Cannot generate!','warn');
-        return;
-    end
+    %if isnan(shaft_length) || (shaft_length <=0) || (shaft_length > 50)
+    %    msgbox('The shaft length specified is not an acceptable value. Please correct it.','Cannot generate!','warn');
+    %    return;
+    %end
 
     % Let the user know that the design is being generated
-    generateMessage = msgbox('Generating design! Please wait...');
+    %generateMessage = msgbox('Generating design! Please wait...');
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %                           Input Parameters
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    driverWeight = 111.58;
+    steeringStiffness = 1;
+    corneringRadius = 1;
     
     % Calling the design code with all inputted parameters
-    DesignCode(driverMass, suspensionFeelType, rackPinionRatio, jumpHeight, terrainType);
+    DesignCode(driverWeight, steeringStiffness, corneringRadius);
     
     % Once DesignCode has been successfully completed, close the message
     % box
-    delete(generateMessage);
+    %delete(generateMessage);
     
     % Once the parts optimized, output message box to the user
-    msgbox('Successfully optimized! Please re-build the SolidWorks assembly');
+    %msgbox('Successfully optimized! Please re-build the SolidWorks assembly');
     
 
     %Show the results on the GUI.
-    log_file = 'H:\groupABC\Log\groupABC_LOG.TXT';
-    fid = fopen(log_file,'r'); %Open the log file for reading
-    S=char(fread(fid)'); %Read the file into a string
-    fclose(fid);
+    %log_file = 'H:\groupABC\Log\groupABC_LOG.TXT';
+    %fid = fopen(log_file,'r'); %Open the log file for reading
+    %S=char(fread(fid)'); %Read the file into a string
+    %fclose(fid);
 
-    set(handles.TXT_log,'String',S); %write the string into the textbox
-    set(handles.TXT_path,'String',log_file); %show the path of the log file
-    set(handles.TXT_path,'Visible','on');
+    %set(handles.TXT_log,'String',S); %write the string into the textbox
+    %set(handles.TXT_path,'String',log_file); %show the path of the log file
+    %set(handles.TXT_path,'Visible','on');
 end
 
 % =========================================================================
