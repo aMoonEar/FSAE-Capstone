@@ -1,3 +1,18 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Function: calcCenterOfMass
+%
+%   Parameters: driverMass (kg)
+%   
+%   Outputs: totalMass (kg), lengthCOMToRearTire (mm),
+%   lengthCOMToFrontTire (mm), COMFromGroundX(mm),
+%   COMFromGroundY (mm), COMFromGroundZ (mm),
+%   lengthCOMToFrontWing (mm), lengthCOMToRearWing (mm),
+%   heightCOMToFrontWing (mm), heightCOMToRearWing (mm),
+%   lengthToRightWheelCOM (mm), lengthToLeftWheelCOM (mm)
+%
+%   calcCenterOfMass calculates the main center of mass calculations 
+%   with the inputted driver weight.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [totalMass,... 
     lengthCOMToRearTire,...
     lengthCOMToFrontTire,...
@@ -10,37 +25,48 @@ function [totalMass,...
     heightCOMToRearWing,...
     lengthToRightWheelCOM,...
     lengthToLeftWheelCOM] = calcCenterOfMass(driverWeight)
-
-    xTimesMass = 839.1;
-    yTimesMassWithoutDriver = 43716.7778;
-    zTimesMassWithoutDriver = 300147.5028;
     
-    yTimesMassDriver = -35 * driverWeight;
-    zTimesMassDriver = 1312.54 * driverWeight;
+    % The value of the axis*Mass without the driver
+    xTimesMass = 839.1; % mm*kg (x*Mass is not affected by the weight of the driver)
+    yTimesMassWithoutDriver = 43716.7778; % mm*kg
+    zTimesMassWithoutDriver = 300147.5028; % mm*kg
     
-    yTimesMass = yTimesMassWithoutDriver + yTimesMassDriver;
-    zTimesMass = zTimesMassWithoutDriver + zTimesMassDriver;
+    % Calculate the axis*Mass of only the driver
+    yTimesMassDriver = -35 * driverWeight; % mm*kg
+    zTimesMassDriver = 1312.54 * driverWeight; % mm*kg
     
-    totalMass = 191.885 + driverWeight;
+    % Add the axis*Mass of the driver to the total axis*Mass
+    yTimesMass = yTimesMassWithoutDriver + yTimesMassDriver; % mm*kg
+    zTimesMass = zTimesMassWithoutDriver + zTimesMassDriver; % mm*kg
     
-    COMx = totalMass * xTimesMass;
-    COMy = totalMass * yTimesMass;
-    COMz = totalMass * zTimesMass;
+    % Calculate the total mass of the vehicle
+    totalMass = 191.885 + driverWeight; % kg
     
-    COMFromGroundX = (COMx)/1000;
-    COMFromGroundY = (COMy + 103 + 55)/1000;
-    COMFromGroundZ = (COMz)/1000;
+    % Calculate the new center of mass of each axis with update axis*Mass
+    COMx = xTimesMass / totalMass; % mm
+    COMy = yTimesMass / totalMass; % mm
+    COMz = zTimesMass / totalMass; % mm
     
-    lengthCOMToRearTire = abs((COMFromGroundZ - 2261.56)/(1000));
-    lengthCOMToFrontTire = abs((COMFromGroundZ - 658.535)/(1000));
+    % Add the height above the ground
+    COMFromGroundX = COMx; % mm
+    COMFromGroundY = COMy + 158; % mm
+    COMFromGroundZ = COMz; % mm
     
-    lengthCOMToFrontWing = lengthCOMToFrontTire + 0.05;
-    lengthCOMToRearWing = lengthCOMToRearTire + 0.03;
+    % Calculate the distance between each end of the vehicle to the COM
+    lengthCOMToRearTire = abs((COMFromGroundZ - 2261.56)/(1000)); % mm
+    lengthCOMToFrontTire = abs((COMFromGroundZ - 658.535)/(1000)); % mm
     
-    heightCOMToFrontWing = COMFromGroundY - 0.1;
-    heightCOMToRearWing = 1.285 - COMFromGroundY;
+    % Calculate the distance between the Front and Rear Wing to the COM
+    lengthCOMToFrontWing = lengthCOMToFrontTire + 0.05; % mm
+    lengthCOMToRearWing = lengthCOMToRearTire + 0.03; % mm
     
-    lengthToRightWheelCOM = 0.5 - COMFromGroundX;
-    lengthToLeftWheelCOM = 1 - lengthToRightWheelCOM;
+    % Calculate the height of the (distance on y axis) between the COM to
+    % the front & rear wing
+    heightCOMToFrontWing = (COMFromGroundY/1000) - 0.1; % mm
+    heightCOMToRearWing = 1.285 - (COMFromGroundY/1000);% mm
+    
+    % Calculate the distance between the right and left wheel to the COM
+    lengthToRightWheelCOM = 0.5 - (COMFromGroundX/1000);% mm
+    lengthToLeftWheelCOM = 1 - lengthToRightWheelCOM;% mm
 
 end

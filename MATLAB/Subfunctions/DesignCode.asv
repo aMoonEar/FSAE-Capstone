@@ -8,6 +8,22 @@ function DesignCode(driverWeight, steeringStiffness, corneringRadius)
     %    return
     %end
     
+    % Output log file location
+    logFile = 'H:
+    logFile = 'Z:\2018\MCG4322A\Digital Files\BSAE-3B\Log\BSAE-3B_LOG.txt'; % log file
+    
+    fileID = fopen(logFile,'wt+'); % Open logFile for reading and writing. If the file exists, its contents are erased
+    % Writing values to file
+    fprintf(fileID,'******************************************************************************\n');
+    fprintf(fileID,'                                 Input Parameters \n');
+    fprintf(fileID,'******************************************************************************\n\n');
+    fprintf(fileID,strcat('Mass of the driver =',32,num2str(driverMass),' kg\n'));
+    fprintf(fileID,strcat('Suspension feel type (damping ratio) =',32,num2str(suspensionFeelType),'\n'));
+    fprintf(fileID,strcat('Rack and pinion ratio =',32,num2str(rackPinionRatio),'\n'));
+    fprintf(fileID,strcat('Jump height =',32,num2str(jumpHeight),' m\n'));
+    fprintf(fileID,strcat('Terrain type (friction coefficient) =',32,num2str(terrainType),'\n\n'));
+    fclose(fileID); % Close file
+    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %                   Constants
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,22 +33,25 @@ function DesignCode(driverWeight, steeringStiffness, corneringRadius)
     radiusOfTire = 0.25527;
     maxVelocity = 105/3.6;
     densityAir = 1.225;
+    trackWidth = 1.2538;
     
     frontalAreaCar = 1.5412;
     frontalAreaRearWing = 0.6425;
     frontalAreaFrontWing = 0.5312;
     coefficientLift = 0.29;
     coefficientWing = 3.074;
+    coefficientRoad = 0.9;
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %                   Constants
+    %                   Calculations
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    [totalMass, rearTireToCom, frontTireToCOM, COMFromGroundX, COMFromGroundY, COMFromGroundZ, lengthCOMToFrontWing, lengthCOMToRearWing, heightCOMToFrontWing, heightCOMToRearWing, lengthToRightWheelCOM, lengthToLeftWheelCOM] = calcCenterOfMass(driverWeight);
-        
+    [totalMass, rearTireToCOM, frontTireToCOM, COMFromGroundX, COMFromGroundY, COMFromGroundZ, lengthCOMToFrontWing, lengthCOMToRearWing, heightCOMToFrontWing, heightCOMToRearWing, lengthToRightWheelCOM, lengthToLeftWheelCOM] = calcCenterOfMass(driverWeight);
+    calcDeceleration(totalMass, rearTireToCOM, frontTireToCOM, COMFromGroundX, COMFromGroundY, COMFromGroundZ, lengthCOMToFrontWing,  lengthCOMToRearWing, heightCOMToFrontWing, heightCOMToRearWing, lengthToRightWheelCOM, lengthToLeftWheelCOM, densityAir, coefficientWing, frontalAreaFrontWing, frontalAreaRearWing, coefficientLift, coefficientDrag, coefficientRoad, frontalAreaCar, maxVelocity, gravity);
+    calcSteering();
     %default_diameter = 0.5; %Units (mm). Sets an initial diameter value.
     %strength_al = 31; %Units (MPa). Assuming 1100-0 Al alloy, 
-                           %Source: Fundamentals of Machine Component Design” Robert C. Juvinall and Kurt M, Marshek, Wiley; 5th edition.
+                           %Source: Fundamentals of Machine Component Designï¿½ Robert C. Juvinall and Kurt M, Marshek, Wiley; 5th edition.
     
     %new_diameter = calc_shaft_diameter(default_diameter, strength_al, axial_force, number_of_weights, shaft_length); %A call to a subfunction to calculate the new shaft diameter.
 

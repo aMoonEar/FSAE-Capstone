@@ -1,6 +1,6 @@
 % =========================================================================
 % =========================================================================
-%                       FSAE2 - Capstone Project     
+%                        FSAE2 - Capstone Project     
 % =========================================================================
 % =========================================================================
 
@@ -68,7 +68,7 @@ varargout{1} = handles.output;
 
 % End initialization code
 
-% =========================================================================\
+% =========================================================================
 % =========================================================================
 % --- Executes just before MAIN is made visible.
 % =========================================================================
@@ -97,19 +97,7 @@ set(handles.NumWeights,'Value',1); %The 1st item of the list is selected. Change
 set(handles.TXT_shaftlength,'String','21.25');
 
 %Set the window title with the group identification:
-set(handles.figure1,'Name','Group FSAE2 // CADCAM 2021');
-
-% Display uOttawa logo on the GUI
-axis image
-axes(handles.uOttawa);
-uOttawaLogo = imread('C:\Users\16138\Documents\FSAE-Capstone\MATLAB\GUI Images\uOttawaLogo.JPG');
-imshow(uOttawaLogo);
-
-% Display uOttawa logo on the GUI
-axis image
-axes(handles.fsae);
-fsaeLogo = imread('C:\Users\16138\Documents\FSAE-Capstone\MATLAB\GUI Images\SAE_logo.png');
-imshow(fsaeLogo);
+set(handles.figure1,'Name','Group ABC // CADCAM 2017');
 
 %Add the 'subfunctions' folder to the path so that subfunctions can be
 %accessed
@@ -320,40 +308,6 @@ function TXT_shaftlength_Callback(hObject, eventdata, handles) %#ok
 % --- Executes during object creation, after setting all properties.
 function TXT_shaftlength_CreateFcn(hObject, eventdata, handles) %#ok
 % hObject    handle to TXT_shaftlength (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
-% --- Executes during object creation, after setting all properties.
-function uOttawa_CreateFcn(hObject, eventdata, handles) %#ok
-% hObject    handle to uOttawa (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-uOttawaLogo = imread('C:\Users\16138\Documents\FSAE-Capstone\MATLAB\GUI Images\uOttawaLogo.png');
-imshow(uOttawaLogo);
-% Hint: place code in OpeningFcn to populate uOttawa
-
-
-
-function edit10_Callback(hObject, eventdata, handles)
-% hObject    handle to edit10 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit10 as text
-%        str2double(get(hObject,'String')) returns contents of edit10 as a double
-
-
-% --- Executes during object creation, after setting all properties.
-function edit10_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit10 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
