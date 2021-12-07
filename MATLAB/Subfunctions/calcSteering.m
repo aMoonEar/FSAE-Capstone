@@ -23,6 +23,8 @@ function [] = calcSteering(...
     trackWidth,...
     gravity)
 
+
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %                       Ackerman Geometry
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,14 +66,29 @@ function [] = calcHeimJoint(...
     coefficientRoad,...
     maximumTurningAngle,...
     distancePinAxis_HeimJoint,...
+    normalForceFrontStatic,...
+    radiusContactPatch,...
     totalRadiusContactPatch,...
     totalWheelNormalForce)
 
+    % Calculate the angle between the steering arm the knuckle
     angleSteeringArm_Knuckle = 18.31*(3.14/180);
+    
+    % Calculate the moment of friction acting on the heim joint
     momentOfFriction = ((2/3)*coefficientRoad*totalWheelNormalForce*totalRadiusContactPatch); %Nm
-    reactionForce = (momentOfFriction)/((distancePinAxis_HeimJoint*COS(-maximumTurningAngle-angleSteeringArm_Knuckle))); %N
+    
+    % Calculate the reaction force on the heim joint to analyse the shear
+    % stress. This is the lateral force required to turn the steering arm
+    reactionForce = (momentOfFriction)/((distancePinAxis_HeimJoint*cos(-maximumTurningAngle-angleSteeringArm_Knuckle))); %N
+    
+    % Calculate the maximum shear stress acting on the heim joint
     maxShearStress = ((4/3)*(reactionForce/((3.14*heimJointReactionForce^2)/(4)))); % Pa
+    
+    % Assume shear stress of AISI-1030
     shearYieldStress = 139200000; %Pa
+    
+    % Calculate the safety factor of the heim joint bolt of the steering
+    % knuckle
     safetyFactor = shearYieldStress/maxShearStress;
     
 end

@@ -1,4 +1,13 @@
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Function: 
+%
+%   Parameters: 
+% 
+%   Outputs: 
+%
+%   calcWingDownforce  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function DesignCode(driverWeight, steeringStiffness, corneringRadius)
 
     %Check if the user tries to run this file directly
