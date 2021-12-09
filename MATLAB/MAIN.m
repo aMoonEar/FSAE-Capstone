@@ -39,6 +39,7 @@ function varargout = MAIN(varargin)
     % Edit the above text to modify the response to help MAIN
     
     % Begin initialization code - DO NOT EDIT
+    %warning('off','all')
     gui_Singleton = 1;
     gui_State = struct('gui_Name',       mfilename, ...
                        'gui_Singleton',  gui_Singleton, ...
@@ -90,14 +91,13 @@ function varargout = MAIN(varargin)
     %Set the default values on the GUI. It is recommended to choose a valid set 
     %of default values as a starting point when the program launches.
     clc
-    Default_axial_force=75;
+    Default_driver_weight=75;
+    set(handles.Sliderdriver_weight,'Value',Default_driver_weight);
+    set(handles.TXTdriver_weight,'String',num2str(Default_driver_weight));
+
     Default_cornering=3.5;
-    set(handles.Slideraxial_force,'Value',Default_axial_force);
-    set(handles.TXTaxial_force,'String',num2str(Default_axial_force));
     set(handles.Slidercornering,'Value',Default_cornering);
     set(handles.TXTcornering,'String',num2str(Default_cornering));
-    %set(handles.NumWeights,'Value',1); %The 1st item of the list is selected. Change the list from the GUIDE.
-    %set(handles.TXT_shaftlength,'String','21.25');
     
     %Set the window title with the group identification:
     set(handles.figure1,'Name','Group FSAE2 // CADCAM 2021');
@@ -129,7 +129,11 @@ function varargout = MAIN(varargin)
     if(isempty(handles))
         Wrong_File();
     else
+
         %Get the design parameters from the interface (DO NOT PERFORM ANY DESIGN CALCULATIONS HERE)
+        driverMass = str2double(get(handles.driverMassText, 'String'));
+        driverMass = str2double(get(handles.driverMassText, 'String'));
+        suspensionType = get(get(handles.suspensionButtonGroup, 'SelectedObject'),'String');
     
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %                           Range Checking
@@ -139,13 +143,28 @@ function varargout = MAIN(varargin)
         %    msgbox('The shaft length specified is not an acceptable value. Please correct it.','Cannot generate!','warn');
         %    return;
         %end
+
+        % Check driver mass inputted 
+        if (driverMass < get(handles.driverMassSlider, 'Min') || driverMass > get(handles.driverMassSlider, 'Max') || isnan(driverMass) )
+            msgbox('The driver weight specified is not an acceptable value. Please correct it.','Cannot generate design!','warn');
+            return;
+        end
     
         % Let the user know that the design is being generated
-        %generateMessage = msgbox('Generating design! Please wait...');
+        generateMessage = msgbox('Generating design! Please wait...');
         
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %                           Input Parameters
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+        %                        Radio button values                          %
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    
+        % Checks which suspension feel type is selected and assigns its value to the corresponding variable
+        if (strcmp(suspensionType,'(0.25 (Soft)'))
+            suspensionType = 0.25;
+        elseif (strcmp(suspensionType,'0.75 (Stiff)'))
+            suspensionType = 0.75;
+        else 
+            suspensionType = str2double(suspensionType);
+        end
         
         driverWeight = 111.58;
         steeringStiffness = 1;
@@ -197,13 +216,13 @@ function varargout = MAIN(varargin)
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    function TXTaxial_force_Callback(hObject, eventdata, handles) %#ok
-    % hObject    handle to TXTaxial_force (see GCBO) 
+    function TXTdriver_weight_Callback(hObject, eventdata, handles) %#ok
+    % hObject    handle to TXTdriver_weight (see GCBO) 
     % eventdata  reserved - to be defined in a future version of MATLAB
     % handles    structure with handles and user data (see GUIDATA)
     
-    % Hints: get(hObject,'String') returns contents of TXTaxial_force as text
-    %        str2double(get(hObject,'String')) returns contents of TXTaxial_force as a double
+    % Hints: get(hObject,'String') returns contents of TXTdriver_weight as text
+    %        str2double(get(hObject,'String')) returns contents of TXTdriver_weight as a double
     
     if(isempty(handles))
         Wrong_File();
@@ -212,19 +231,19 @@ function varargout = MAIN(varargin)
     
         %Apply basic testing to see if the value does not exceed the range of the
         %slider (defined in the gui)
-        if(value<get(handles.Slideraxial_force,'Min'))
-            value = get(handles.Slideraxial_force,'Min');
+        if(value<get(handles.Sliderdriver_weight,'Min'))
+            value = get(handles.Sliderdriver_weight,'Min');
         end
-        if(value>get(handles.Slideraxial_force,'Max'))
-            value = get(handles.Slideraxial_force,'Max');
+        if(value>get(handles.Sliderdriver_weight,'Max'))
+            value = get(handles.Sliderdriver_weight,'Max');
         end
         set(hObject,'String',value);
-        set(handles.Slideraxial_force,'Value',value);
+        set(handles.Sliderdriver_weight,'Value',value);
     end
     
     % --- Executes during object creation, after setting all properties.
-    function TXTaxial_force_CreateFcn(hObject, eventdata, handles) %#ok
-        % hObject    handle to TXTaxial_force (see GCBO)
+    function TXTdriver_weight_CreateFcn(hObject, eventdata, handles) %#ok
+        % hObject    handle to TXTdriver_weight (see GCBO)
         % eventdata  reserved - to be defined in a future version of MATLAB
         % handles    empty - handles not created until after all CreateFcns called
         
@@ -275,8 +294,8 @@ function varargout = MAIN(varargin)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     % --- Executes on slider movement.
-    function Slideraxial_force_Callback(hObject, eventdata, handles) %#ok
-    % hObject    handle to Slideraxial_force (see GCBO)
+    function Sliderdriver_weight_Callback(hObject, eventdata, handles) %#ok
+    % hObject    handle to Sliderdriver_weight (see GCBO)
     % eventdata  reserved - to be defined in a future version of MATLAB
     % handles    structure with handles and user data (see GUIDATA)
     
@@ -287,12 +306,12 @@ function varargout = MAIN(varargin)
         Wrong_File();
     else
         value = round(get(hObject,'Value')); %Round the value to the nearest integer
-        set(handles.TXTaxial_force,'String',num2str(value));
+        set(handles.TXTdriver_weight,'String',num2str(value));
     end
     
     % --- Executes during object creation, after setting all properties.
-    function Slideraxial_force_CreateFcn(hObject, eventdata, handles) %#ok
-    % hObject    handle to Slideraxial_force (see GCBO)
+    function Sliderdriver_weight_CreateFcn(hObject, eventdata, handles) %#ok
+    % hObject    handle to Sliderdriver_weight (see GCBO)
     % eventdata  reserved - to be defined in a future version of MATLAB
     % handles    empty - handles not created until after all CreateFcns called
     
