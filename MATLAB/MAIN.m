@@ -91,10 +91,13 @@ guidata(hObject, handles);
 %of default values as a starting point when the program launches.
 clc
 Default_axial_force=50;
+Default_cornering=3.5;
 set(handles.Slideraxial_force,'Value',Default_axial_force);
 set(handles.TXTaxial_force,'String',num2str(Default_axial_force));
-set(handles.NumWeights,'Value',1); %The 1st item of the list is selected. Change the list from the GUIDE.
-set(handles.TXT_shaftlength,'String','21.25');
+set(handles.SliderCornering,'String',num2str(Default_cornering));
+set(handles.TXTcornering,'String',num2str(Default_cornering));
+%set(handles.NumWeights,'Value',1); %The 1st item of the list is selected. Change the list from the GUIDE.
+%set(handles.TXT_shaftlength,'String','21.25');
 
 %Set the window title with the group identification:
 set(handles.figure1,'Name','Group FSAE2 // CADCAM 2021');
@@ -217,12 +220,63 @@ else
     set(handles.Slideraxial_force,'Value',value);
 end
 
+
+function TXTcornering_radius_Callback(hObject, eventdata, handles)
+% hObject    handle to TXTcornering_radius (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of TXTcornering_radius as text
+%        str2double(get(hObject,'String')) returns contents of TXTcornering_radius as a double
+
+if(isempty(handles))
+    Wrong_File();
+else
+    value = round(str2double(get(hObject,'String')));
+
+    %Apply basic testing to see if the value does not exceed the range of the
+    %slider (defined in the gui)
+    if(value<get(handles.SliderCornering,'Min'))
+        value = get(handles.SliderCornering,'Min');
+    end
+    if(value>get(handles.SliderCornering,'Max'))
+        value = get(handles.SliderCornering,'Max');
+    end
+    set(hObject,'String',value);
+    set(handles.SliderCornering,'Value',value);
+end
+
+
+function TXTcornering_Callback(hObject, eventdata, handles)
+% hObject    handle to TXTcornering (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of TXTcornering as text
+%        str2double(get(hObject,'String')) returns contents of TXTcornering as a double
+
 % =========================================================================
 % =========================================================================
 % The functions below are created by the GUI. Do not delete any of them! 
 % Adding new buttons and inputs will add more callbacks and createfcns.
 % =========================================================================
 % =========================================================================
+if(isempty(handles))
+    Wrong_File();
+else
+    value = round(str2double(get(hObject,'String')));
+
+    %Apply basic testing to see if the value does not exceed the range of the
+    %slider (defined in the gui)
+    if(value<get(handles.SliderCornering,'Min'))
+        value = get(handles.SliderCornering,'Min');
+    end
+    if(value>get(handles.SliderCornering,'Max'))
+        value = get(handles.SliderCornering,'Max');
+    end
+    set(hObject,'String',value);
+    set(handles.SliderCornering,'Value',value);
+end
 
 
 function TXT_log_Callback(hObject, eventdata, handles) %#ok
@@ -354,6 +408,99 @@ function edit10_Callback(hObject, eventdata, handles)
 % --- Executes during object creation, after setting all properties.
 function edit10_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to edit10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function TXTcornering_radius_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to TXTcornering_radius (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on selection change in popupmenu5.
+function popupmenu5_Callback(hObject, eventdata, handles)
+% hObject    handle to popupmenu5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu5 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from popupmenu5
+
+
+% --- Executes during object creation, after setting all properties.
+function popupmenu5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on slider movement.
+function slider7_Callback(hObject, eventdata, handles)
+% hObject    handle to slider7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function slider7_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on slider movement.
+function SliderCornering_Callback(hObject, eventdata, handles)
+% hObject    handle to SliderCornering (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function SliderCornering_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to SliderCornering (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function TXTcornering_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to TXTcornering (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
