@@ -23,53 +23,20 @@ function [] = calcSteering(...
     trackWidth,...
     gravity)
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %                    Tie Rod & Heim Joint
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    [innerSteeringAngle, outerSteeringAngle] = calcSteeringAngle(...
-    corneringRadius,...
-    lengthCOMToRearTire,...
-    trackWidth)
+    tieRodInputForce = J37/((COS(J35))); %N
+    heimJointReactionForce = J29; %N
+    areaOfThread = (J36/J38)*10^6; %mm^2
+    axialStress = (J36/J38)*10^6; %Pa
+    yieldStrength = 220000000 %Pa
     
     
-    
-end
-
-
-function [innerSteeringAngle, outerSteeringAngle] = calcSteeringAngle(...
-    corneringRadius,...
-    lengthCOMToRearTire,...
-    trackWidth)
-
-    % Calculate the horizontal distance from the Center of Corner to center of rear axle
-    lengthCOM_RearAxle = sqrt(corneringRadius^2 - lengthCOMToRearTire^2); % m
-   
-    % Calculate the distance from the rear axle to the front axle
-    distanceRearAxle_FrontAxle = lengthCOMToRearTire + lengthCOMToFrontTire; % m
-    
-    % Calculate the max inner steering angle
-    innerSteeringAngle = atan( distanceRearAxle_FrontAxle / (lengthCOM_RearAxle - trackWidth/2)); % rad
-    outerSteeringAngle = atan( distanceRearAxle_FrontAxle / (lengthCOM_RearAxle + trackWidth/2)); % rad
 
 end
 
-function [innerSteeringAngle, outerSteeringAngle] = calcHeimJointBolt(...
-    coefficientRoad,...
-    innerSteeringAngle,
-    )
-
-`
-
-
-end
-
-function [] = calcRackLength(...
-    steeringWheelRadius,...
-    innerSteeringAngle
-    )
-
-    steeringRatio = pi/innerSteeringAngle;
-    rackLength = 2*((2/3)*pi*steeringWheelRadius)/R101;
-
-end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %              Heim Joint Bolt (Steering Knuckle)
