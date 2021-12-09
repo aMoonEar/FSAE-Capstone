@@ -8,7 +8,7 @@
 %
 %   calcWingDownforce  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function DesignCode(driverWeight, steeringStiffness, corneringRadius)
+function DesignCode(driverWeight, corneringRadius, suspensionFeel)
 
     %Check if the user tries to run this file directly
     %if ~exist('axial_force','var')
@@ -18,9 +18,8 @@ function DesignCode(driverWeight, steeringStiffness, corneringRadius)
     %end
     
     % Output log file location
-    %logFile = 'H:\groupFSAE2\Log\groupFSAE2_LOG.txt';
-    logFile = 'C:\Users\16138\Documents\FSAE-Capstone\Log\groupFSAE2_LOG.txt'; % replace this directory with above
-    %logFile = 'Z:\2018\MCG4322A\Digital Files\BSAE-3B\Log\BSAE-3B_LOG.txt'; % log file
+    logFile = 'H:\groupFSAE2\Log\groupFSAE2_LOG.txt';
+    %logFile = 'C:\Users\16138\Documents\FSAE-Capstone\Log\groupFSAE2_LOG.txt'; % replace this directory with above
     
     fileID = fopen(logFile,'wt+'); % Open logFile for reading and writing. If the file exists, its contents are erased
     % Writing values to file
@@ -28,6 +27,8 @@ function DesignCode(driverWeight, steeringStiffness, corneringRadius)
     fprintf(fileID,'              Input Parameters \n');
     fprintf(fileID,'************************************************************************\n');
     fprintf(fileID,strcat('Mass of the driver =',32,num2str(driverWeight),' kg\n'));
+    fprintf(fileID,strcat('Cornering Radius =',32,num2str(corneringRadius),' m\n'));
+    fprintf(fileID,strcat('Suspension damper amount =',32,num2str(suspensionFeel),' \n'));
     fclose(fileID); % Close file
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,9 +53,12 @@ function DesignCode(driverWeight, steeringStiffness, corneringRadius)
     %                   Calculations
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    [totalMass, rearTireToCOM, frontTireToCOM, COMFromGroundX, COMFromGroundY, COMFromGroundZ, lengthCOMToFrontWing, lengthCOMToRearWing, heightCOMToFrontWing, heightCOMToRearWing, lengthToRightWheelCOM, lengthToLeftWheelCOM] = calcCenterOfMass(driverWeight);
-    calcDeceleration(totalMass, rearTireToCOM, frontTireToCOM, COMFromGroundX, COMFromGroundY, COMFromGroundZ, lengthCOMToFrontWing,  lengthCOMToRearWing, heightCOMToFrontWing, heightCOMToRearWing, lengthToRightWheelCOM, lengthToLeftWheelCOM, densityAir, coefficientWing, frontalAreaFrontWing, frontalAreaRearWing, coefficientLift, coefficientDrag, coefficientRoad, frontalAreaCar, maxVelocity, gravity);
-    calcSteering();
+    [OutterradiustubeA, InnerradiustubeA, OutterWidthtubeB, InnerWidthtubeB] = calcChassisTubeThickness(driverWeight);
+    
+    %[totalMass, rearTireToCOM, frontTireToCOM, COMFromGroundX, COMFromGroundY, COMFromGroundZ, lengthCOMToFrontWing, lengthCOMToRearWing, heightCOMToFrontWing, heightCOMToRearWing, lengthToRightWheelCOM, lengthToLeftWheelCOM] = calcCenterOfMass(driverWeight);
+    %calcDeceleration(totalMass, rearTireToCOM, frontTireToCOM, COMFromGroundX, COMFromGroundY, COMFromGroundZ, lengthCOMToFrontWing,  lengthCOMToRearWing, heightCOMToFrontWing, heightCOMToRearWing, lengthToRightWheelCOM, lengthToLeftWheelCOM, densityAir, coefficientWing, frontalAreaFrontWing, frontalAreaRearWing, coefficientLift, coefficientDrag, coefficientRoad, frontalAreaCar, maxVelocity, gravity);
+    %calcSteering();
+    
     %default_diameter = 0.5; %Units (mm). Sets an initial diameter value.
     %strength_al = 31; %Units (MPa). Assuming 1100-0 Al alloy, 
     
