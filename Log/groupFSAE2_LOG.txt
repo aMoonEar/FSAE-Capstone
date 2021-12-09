@@ -1,4 +1,6 @@
 ************************************************************************
               Input Parameters 
 ************************************************************************
-Mass of the driver = 111.58 kg
+Mass of the driver = 75 kg
+Cornering Radius = 3.5 m
+Suspension damper amount = NaN 

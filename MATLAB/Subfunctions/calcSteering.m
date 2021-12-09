@@ -15,6 +15,7 @@ function [] = calcSteering(...
     coefficientWing,...
     frontalAreaFrontWing,...
     frontalAreaRearWing,...
+    shaftDiameterInner,...
     coefficientLift,...
     coefficientDrag,...
     coefficientRoad,...
@@ -27,7 +28,23 @@ function [] = calcSteering(...
     [innerSteeringAngle, outerSteeringAngle] = calcSteeringAngle(...
     corneringRadius,...
     lengthCOMToRearTire,...
-    trackWidth)
+    trackWidth);
+
+    [rackLength] = calcRackLength(...
+    steeringWheelRadius,...
+    innerSteeringAngle);
+
+    % add a while loop here where you calculate the shaft diameter
+
+    [safetyFactorHeimJointBolt] = calcShaftSafety(...
+    innerSteeringAngle,...
+    coefficientRoad,...
+    distancePinAxis_HeimJoint,...
+    normalForceFrontStatic,...
+    radiusContactPatch,...
+    totalRadiusContactPatch,...
+    totalWheelNormalForce,...
+    shaftDiameterInner);
     
     
     
@@ -51,56 +68,78 @@ function [innerSteeringAngle, outerSteeringAngle] = calcSteeringAngle(...
 
 end
 
-function [innerSteeringAngle, outerSteeringAngle] = calcHeimJointBolt(...
-    coefficientRoad,...
-    innerSteeringAngle,
-    )
-
-`
-
-
-end
-
-function [] = calcRackLength(...
+function [rackLength] = calcRackLength(...
     steeringWheelRadius,...
     innerSteeringAngle
     )
 
     steeringRatio = pi/innerSteeringAngle;
-    rackLength = 2*((2/3)*pi*steeringWheelRadius)/R101;
+    rackLength = 2*((2/3)*pi*steeringWheelRadius)/steeringRatio;
 
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%              Heim Joint Bolt (Steering Knuckle)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [] = calcHeimJoint(...
+
+function [safetyFactorHeimJointBolt,] = calcShaftSafety(...
+    innerSteeringAngle,...
     coefficientRoad,...
-    maximumTurningAngle,...
     distancePinAxis_HeimJoint,...
     normalForceFrontStatic,...
     radiusContactPatch,...
     totalRadiusContactPatch,...
-    totalWheelNormalForce)
+    totalWheelNormalForce,...
+    shaftDiameterInner)
 
     % Calculate the angle between the steering arm the knuckle
-    angleSteeringArm_Knuckle = 18.31*(3.14/180);
+    angleSteeringArm_Knuckle = 18.31*(3.14/180); % rad
     
     % Calculate the moment of friction acting on the heim joint
     momentOfFriction = ((2/3)*coefficientRoad*totalWheelNormalForce*totalRadiusContactPatch); %Nm
     
     % Calculate the reaction force on the heim joint to analyse the shear
     % stress. This is the lateral force required to turn the steering arm
-    reactionForce = (momentOfFriction)/((distancePinAxis_HeimJoint*cos(-maximumTurningAngle-angleSteeringArm_Knuckle))); %N
+    heimJointReactionForce = (momentOfFriction)/((distancePinAxis_HeimJoint*cos(-innerSteeringAngle-angleSteeringArm_Knuckle))); %N
     
-    % Calculate the maximum shear stress acting on the heim joint
-    maxShearStress = ((4/3)*(reactionForce/((3.14*heimJointReactionForce^2)/(4)))); % Pa
-    
-    % Assume shear stress of AISI-1030
-    shearYieldStress = 139200000; %Pa
-    
-    % Calculate the safety factor of the heim joint bolt of the steering
-    % knuckle
-    safetyFactor = shearYieldStress/maxShearStress;
-    
+    angleTieRodHeimJoint = 0.149762323; %rad
+
+    tieRodInputForce = heimJointReactionForce/((cos(angleTieRodHeimJoint)));
+
+    anglePinsToTieRod = 30*3.14/180; % rad
+
+    pinReactionForcesRackX =tieRodInputForce*cos((anglePinsToTieRod));
+
+    tangentialForceRack =pinReactionForcesRackX*2; % N
+
+    pinionDiameter = 0.0889 %m
+
+    torqueTransmitted = (tangentialForceRack*pinionDiameter)/2; % Nm
+
+    keyWidth = 0.004; %m
+
+    shaftDiameterOuter = 0.0254; %m
+
+    % 120
+    pinKeyReactionForce = torqueTransmitted/((shaftDiameterOuter/2)+(keyWidth/2)); % N
+
+    uJointArmThickness = 0.00476; % m
+    distanceBetweenUJointArms = 0.0635; %m
+
+    % 131
+    forceUJointSecondaryShaft = (pinKeyReactionForce*(shaftDiameterInner+(keyWidth/2)))/((distanceBetweenUJointArms+(uJointArmThickness/2)))
+
+
+    % 155
+    forceAppliedPrimaryShaft =(forceUJointSecondaryShaft*((uJointArmThickness)+(distanceBetweenUJointArms/2)))/((shaftDiameterOuter)-(keyWidth/2));
+
+    torqueFromShaft =forceAppliedPrimaryShaft*((shaftDiameterOuter/2)+(keyWidth/2));
+
+    momentOfInertia =(3.14)*(shaftDiameterOuter^4-shaftDiameterInner^4);
+
+    stressConcentration = 1.3;
+
+    shearYieldStrength =127600000; % Pa
+
+    shearStressPrimaryShaft = (16*stressConcentration*torqueFromShaft*(shaftDiameterOuter))/momentOfInertia;
+
+    safetyFactorShaft =shearYieldStrength/shearStressPrimaryShaft;
+
 end
