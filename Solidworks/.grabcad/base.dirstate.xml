@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GCSCMDirState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <UpdateTime>2021-12-10T16:55:29.7602979+00:00</UpdateTime>
+  <UpdateTime>2021-12-10T18:24:52.7758716+00:00</UpdateTime>
   <Standins>
     <GCSCMStandin>
       <FileName>Assembly.SLDASM</FileName>
-      <SHA1>9A00B43EC3E95F5C65B3BF53C49C7B2723B48E3A</SHA1>
-      <FileSize>15514882</FileSize>
+      <SHA1>089C465973F9681F3E76E69E1225EC9AEC0B7337</SHA1>
+      <FileSize>16904371</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Chassis with Panels.SLDPRT</FileName>
-      <SHA1>5F639FD6C4D2DCC675A29BC34AF453279D3D7AC8</SHA1>
-      <FileSize>2249978</FileSize>
+      <SHA1>4F596B4EBF1F72CF35169CA15636E89B8BFEFC51</SHA1>
+      <FileSize>2509535</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -151,8 +151,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Powertrain\Rear_Axle_Assembly.SLDASM</FileName>
-      <SHA1>9B68489BF2E262AF01582F2765E06B0288835126</SHA1>
-      <FileSize>2608987</FileSize>
+      <SHA1>A451A71AF0A3BAA66CF51C93FC5AE2AB02DE7559</SHA1>
+      <FileSize>2610543</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -200,8 +200,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Powertrain\Tripod and Half Axle\Tripod_Half_Axle_Assembly.SLDASM</FileName>
-      <SHA1>0F8BABFD53A42A5317478AA1A4725B267195A348</SHA1>
-      <FileSize>595368</FileSize>
+      <SHA1>32EB3CCEA285525B409BA8F8D8647D3DFA629012</SHA1>
+      <FileSize>595335</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -298,8 +298,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Steering\Updated Steering\Steering Wheel\Steering Assembley.SLDASM</FileName>
-      <SHA1>A477EEE7722723096BE65E09D9527A40F08F74AE</SHA1>
-      <FileSize>527602</FileSize>
+      <SHA1>EB2C406F7CC9BA9950E8BF168B2426D53185DDC0</SHA1>
+      <FileSize>527277</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -403,57 +403,57 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\CAs\FLCA_Left.SLDPRT</FileName>
-      <SHA1>CE66CC29EA290CBFE99E338F1356AFF8F73EE915</SHA1>
-      <FileSize>138009</FileSize>
+      <SHA1>5578B3FF05C763500F4A5AC50977AC8C88DAE199</SHA1>
+      <FileSize>139150</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\CAs\FLCA_Right.SLDPRT</FileName>
-      <SHA1>8928D00114EBF452566D77AF215293AC7FD2480D</SHA1>
-      <FileSize>139257</FileSize>
+      <SHA1>AE9D22C9D3FBA492BAC0B2DE601D1053EF4CA07C</SHA1>
+      <FileSize>138061</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\CAs\FUCA.SLDPRT</FileName>
-      <SHA1>D9C4657EB665E844A1E4426836689E334BAD6233</SHA1>
-      <FileSize>101589</FileSize>
+      <SHA1>9979DE7C07D7A32665D14E7B52B23255AA2AAF33</SHA1>
+      <FileSize>101692</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\CAs\RLCA_Left.SLDPRT</FileName>
-      <SHA1>E1734CA1E950D14B520E950043B41D49CB20B1EB</SHA1>
-      <FileSize>164323</FileSize>
+      <SHA1>E2C019C0EA29AB4A3605BFAD78CF94BEAC40A53B</SHA1>
+      <FileSize>164906</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\CAs\RLCA_Right.SLDPRT</FileName>
-      <SHA1>BD073A063F34FA83A2FD264BDF0304A12C1F014C</SHA1>
-      <FileSize>167244</FileSize>
+      <SHA1>535D0ECB691CCE95797D25B81A57D9063F50F0D1</SHA1>
+      <FileSize>165741</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\CAs\RUCA.SLDPRT</FileName>
-      <SHA1>F66F97F700A5BE948E410E190CA90846303029DE</SHA1>
-      <FileSize>110140</FileSize>
+      <SHA1>4D86EB79A245DA05BA80E2917DC0811B2CCC7BD4</SHA1>
+      <FileSize>110307</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\Pushrods\FPushrod.SLDPRT</FileName>
-      <SHA1>5DF227D36293E4BBD8C60765EE2D5EC7E30E9CB1</SHA1>
-      <FileSize>68874</FileSize>
+      <SHA1>56F169F7C0DD7B7DF13A46EC68FDA084D3E311E7</SHA1>
+      <FileSize>68526</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\Pushrods\RPushrod.SLDPRT</FileName>
-      <SHA1>32C63DB480BA2EA3CA9D8C168690F488CA5BA10B</SHA1>
-      <FileSize>75320</FileSize>
+      <SHA1>0BD551ABC4E789C25FFAF9903977C022425D42DA</SHA1>
+      <FileSize>75351</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -466,78 +466,78 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\Shock Absorber\Outer Cylinder.SLDPRT</FileName>
-      <SHA1>FE105E77B2C44208FDD296A84FFBE9F576A1E4AA</SHA1>
-      <FileSize>298986</FileSize>
+      <SHA1>9478A607B3342D4F7CE0C88FDF22EA71B2414C8B</SHA1>
+      <FileSize>299204</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\threaded bung.SLDPRT</FileName>
-      <SHA1>F1E115495B82BE4172E8DCEE28D3033365E14ADC</SHA1>
-      <FileSize>128312</FileSize>
+      <SHA1>1BB5486BE9BC7886431A5050A2A89E36EAA7EC78</SHA1>
+      <FileSize>128329</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\FLCALeft_Assembly.SLDASM</FileName>
-      <SHA1>431DA0F06B28ABEF14D17DA7C6CC49988013445E</SHA1>
-      <FileSize>1066654</FileSize>
+      <SHA1>A72B25E4C80FD35EAA7C894314FB3418DBDEEEFE</SHA1>
+      <FileSize>1066921</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\FLCARight_Assembly.SLDASM</FileName>
-      <SHA1>239DD7F1A61ED029AD5BC9EBAEC09ED0A11FCF32</SHA1>
-      <FileSize>1065724</FileSize>
+      <SHA1>29EDC256F483DE63FD393C520879397AC8315CC7</SHA1>
+      <FileSize>1065721</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\FPushrod_Assembly.SLDASM</FileName>
-      <SHA1>F8BEC3B874279DD19A71C92155E80C79CB635ED3</SHA1>
-      <FileSize>595279</FileSize>
+      <SHA1>28D64F0455E17F63E98A0E94767EAAF4FCD60712</SHA1>
+      <FileSize>595570</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\FUCA_Assembly.SLDASM</FileName>
-      <SHA1>659D3E7117A1CE883722BA53ED395FFDDA058A43</SHA1>
-      <FileSize>953423</FileSize>
+      <SHA1>FA841505E2CF992AFE0C4947D596AE2390091623</SHA1>
+      <FileSize>954054</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\RLCALeft_Assembly.SLDASM</FileName>
-      <SHA1>F8907316279B052029960B15C19C5C555B5808D6</SHA1>
-      <FileSize>1079841</FileSize>
+      <SHA1>681309E594CD06A0A67DDF17EDDF6173823EE4E6</SHA1>
+      <FileSize>1079855</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\RLCARight_Assembly.SLDASM</FileName>
-      <SHA1>E5D90BF5017EDFBB6E913DF7E2F87CD133BCDFC5</SHA1>
-      <FileSize>1085075</FileSize>
+      <SHA1>5784074AE18EB7ADC063B30AE8727628A3256D73</SHA1>
+      <FileSize>1085411</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\RPushrod_Assembly.SLDASM</FileName>
-      <SHA1>9BF56ADCCDFBF2EE237C571B95C951C5438E43B7</SHA1>
-      <FileSize>601612</FileSize>
+      <SHA1>D6A1162700F16F73C6F7616C224BC1D538654EAA</SHA1>
+      <FileSize>602178</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\RUCA_Assembly.SLDASM</FileName>
-      <SHA1>64394A342342E0994FCC63ECA9A19AAC3FC32982</SHA1>
-      <FileSize>965720</FileSize>
+      <SHA1>756FB485FA624C0226F0F1C2731F0DFDCB5BF79E</SHA1>
+      <FileSize>966218</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\Rocker_Assembly.SLDASM</FileName>
-      <SHA1>CC49E57429DF7FAE2191D81E8A52C0CA481158C4</SHA1>
-      <FileSize>1135502</FileSize>
+      <SHA1>2C3F4F6162FE9F72F432ED1AC103A0CEFAA5AC16</SHA1>
+      <FileSize>1135061</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -564,8 +564,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Wheel Knuckle Rim Mounts\Knuckle Assem-Caliper Mount\Front Knuckle Assembley Final.SLDASM</FileName>
-      <SHA1>7E58C0F8729A2588DC55BF4617CF41911FB99E98</SHA1>
-      <FileSize>1726534</FileSize>
+      <SHA1>8417077829EDA6C2F6D34B7C82A133D11E98BF3C</SHA1>
+      <FileSize>1726217</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -613,8 +613,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Wheel Knuckle Rim Mounts\Knuckle Assem-Caliper Mount\Rear Knuckle Assembley Final.SLDASM</FileName>
-      <SHA1>C9D700450E39DFF8393D8A575580F9BD3653CC3B</SHA1>
-      <FileSize>967701</FileSize>
+      <SHA1>CB29FE784BAA31A0CF0CAD409F5F72062F107A0B</SHA1>
+      <FileSize>968093</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -704,8 +704,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Steering\Updated Steering\Steering Rack and Pinion\Heim Joints.sldasm</FileName>
-      <SHA1>986C1E6B524269BE3DBB5998979891C6F9FA7BB4</SHA1>
-      <FileSize>286873</FileSize>
+      <SHA1>CEC4E4183D1546730134559704490E94CC7176EA</SHA1>
+      <FileSize>286768</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -725,29 +725,29 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Steering\Updated Steering\Steering Rack and Pinion\Rack End Attachment.SLDPRT</FileName>
-      <SHA1>90EE1BF5B5F489817443547AF30B98084B18A021</SHA1>
-      <FileSize>107491</FileSize>
+      <SHA1>03AC0B0EE19CEAA128428C38FE3A004E91296DDF</SHA1>
+      <FileSize>107339</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Steering\Updated Steering\Steering Rack and Pinion\Rack Rev 1.SLDPRT</FileName>
-      <SHA1>B2BB571D5BBBDE3A44DBD2198C6A69148C8F7C4D</SHA1>
-      <FileSize>200634</FileSize>
+      <SHA1>872C743828978253FAD000B6B6C15AF7B7070958</SHA1>
+      <FileSize>200647</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Steering\Updated Steering\Steering Rack and Pinion\Rack and Pinion.SLDASM</FileName>
-      <SHA1>AF771B2186245CE040B9A636B58FBF9CD8B4F5B6</SHA1>
-      <FileSize>1338668</FileSize>
+      <SHA1>64B8251F08E4E80BD47E92BA903D1D7611C5C9EB</SHA1>
+      <FileSize>1337505</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Steering\Updated Steering\Steering Rack and Pinion\Secondary Shaft.SLDPRT</FileName>
-      <SHA1>6DAD0DA4A803AC9606988D1265D10005FEC82274</SHA1>
-      <FileSize>64356</FileSize>
+      <SHA1>41561A1FB528DA7D0FC653230616DA3ED7230B82</SHA1>
+      <FileSize>63239</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -767,8 +767,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Steering\Updated Steering\Steering Rack and Pinion\Tie Rod.SLDASM</FileName>
-      <SHA1>796DF2463A77B03E879862A616CD139DB4C375EC</SHA1>
-      <FileSize>1011860</FileSize>
+      <SHA1>E2D3AE7DA98A553F2FC58107B514E420C1173E32</SHA1>
+      <FileSize>1011682</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -809,8 +809,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Pedal Box\Base Plate.SLDPRT</FileName>
-      <SHA1>B5FBA45707A9DE2EE0D2ED7A0CB9ECF794AFD946</SHA1>
-      <FileSize>98233</FileSize>
+      <SHA1>DEAFD48EE22C92D709DEAB5B8771A984B00CBB8A</SHA1>
+      <FileSize>96366</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -823,8 +823,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Pedal Box\Brake Pedal Assembley.SLDASM</FileName>
-      <SHA1>13258811F40156E9A6BA1BFD86C7AFE3E1A027E3</SHA1>
-      <FileSize>1691706</FileSize>
+      <SHA1>1718CFF87DD3ED8372AB6DA433EC626B15C68A97</SHA1>
+      <FileSize>1691096</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -865,8 +865,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Pedal Box\Master Cylinder Front Assembly.SLDASM</FileName>
-      <SHA1>02504896A556B81693940DA8ED9C9D59137BDE80</SHA1>
-      <FileSize>287484</FileSize>
+      <SHA1>6D8B54C9EA721570C7EC4676AEBCB093CE881F77</SHA1>
+      <FileSize>288314</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -879,8 +879,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Pedal Box\Master Cylinder Rear Assembly.SLDASM</FileName>
-      <SHA1>E4F9FDC739C77ED6653756401BF929AB7D232EC2</SHA1>
-      <FileSize>288178</FileSize>
+      <SHA1>C2937958961ABBB83D084F90586A2CFD05A6FFBC</SHA1>
+      <FileSize>288427</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -893,8 +893,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Pedal Box\Pedal Box Assembly.SLDASM</FileName>
-      <SHA1>B99D1B5C369E2BB51A1E533991BCE6DF13A40BDF</SHA1>
-      <FileSize>1937896</FileSize>
+      <SHA1>180799EF63475D89A526D6CCAA21471C098A13D7</SHA1>
+      <FileSize>1941285</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -921,8 +921,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Pedal Box\Rod End Assembley.SLDASM</FileName>
-      <SHA1>8141787C7DE0B8D95994463DAE1AD0D35352D2DF</SHA1>
-      <FileSize>127728</FileSize>
+      <SHA1>666EE4DA33D37F9A160EE72EB45734C1FBF5ED21</SHA1>
+      <FileSize>127180</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -942,15 +942,15 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Pedal Box\Throttle Pedal.SLDASM</FileName>
-      <SHA1>AE5FCBAD413FA6280663D0100BB6A980886F9EFF</SHA1>
-      <FileSize>1201341</FileSize>
+      <SHA1>6FAD593D71B089B0F8B5EAB37A1984863070201F</SHA1>
+      <FileSize>1200866</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Powertrain\Chain and Sprocket\Chain_Sprocket_Assembly.SLDASM</FileName>
-      <SHA1>CA27A9AFE8DC52EC3A1D4BD0EE8FC9C9F826C4F5</SHA1>
-      <FileSize>531259</FileSize>
+      <SHA1>4677F9F89E4C19D97DAEEF307970F79EBFB3E0AF</SHA1>
+      <FileSize>531949</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -1096,8 +1096,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Front Wing\Front Wing.SLDASM</FileName>
-      <SHA1>221C2DEFBBD015A4559651F2F246DAE67BD8AB9F</SHA1>
-      <FileSize>335912</FileSize>
+      <SHA1>02BA9522A33BAF2CFE0EC407A571B95F999C36C3</SHA1>
+      <FileSize>339269</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -1152,8 +1152,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Powertrain\Motor\Motor_Chain_Assembly.SLDASM</FileName>
-      <SHA1>DE30DA4C134A92469A8A62CDCAC8FC4D7FCA577E</SHA1>
-      <FileSize>850251</FileSize>
+      <SHA1>01E522F01F2D49F27234E8A156DB4D7E245509CE</SHA1>
+      <FileSize>850446</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -1180,8 +1180,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Powertrain\Motor_Rear_Axle_Assembly.SLDASM</FileName>
-      <SHA1>714B7275E8C5C28205B45EC7FE46E52C0AC362D2</SHA1>
-      <FileSize>5644120</FileSize>
+      <SHA1>CB10A50D412DBCBADE92CFC2F52D15546A5D4DC7</SHA1>
+      <FileSize>5645055</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -1236,8 +1236,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Rear Wing\Rear Wing.SLDASM</FileName>
-      <SHA1>8537113EDFD5C9BFADADB56004CA73F4BE3646A8</SHA1>
-      <FileSize>249254</FileSize>
+      <SHA1>DBA2D7D948832EE95EC738856B17DF8D7E19B4FB</SHA1>
+      <FileSize>248732</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -1369,29 +1369,29 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\Shock Absorber\Piston Head.SLDPRT</FileName>
-      <SHA1>B5C4FC59941DC362F3EA5A7718B72EAD76CA102E</SHA1>
-      <FileSize>131854</FileSize>
+      <SHA1>B98A354CD5F909D9921858F5671A46A9F5194105</SHA1>
+      <FileSize>132449</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\Shock Absorber\Piston.SLDPRT</FileName>
-      <SHA1>4132FC43C5CB716CAFF57B759B6887007589B486</SHA1>
-      <FileSize>113888</FileSize>
+      <SHA1>AA3F2745C7DE56DD49E8252CE09211B1562FC5DA</SHA1>
+      <FileSize>113429</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\Shock Absorber\Spring.sldprt</FileName>
-      <SHA1>646444DBA8709B1082C27C7A56BE6602A64E7DA2</SHA1>
-      <FileSize>437562</FileSize>
+      <SHA1>28F50AB67977338FDE8C6167220D33B6C846967A</SHA1>
+      <FileSize>437912</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\Parts\Shock Absorber\adjustment ring.SLDPRT</FileName>
-      <SHA1>2800836AF2BAEDAC5CED6E175B78417AEA44D225</SHA1>
-      <FileSize>92972</FileSize>
+      <SHA1>BA8A2C71D6F045265468F24152B07F3609E8C870</SHA1>
+      <FileSize>92435</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -1404,8 +1404,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Suspension\SubAssemblies\Shock_Absorber_Assembly.SLDASM</FileName>
-      <SHA1>1D8A3D1AF8CC633259532E8628A9709B16C95873</SHA1>
-      <FileSize>523340</FileSize>
+      <SHA1>DE73C080C55B1246CEBA0186A8247F2841D7819A</SHA1>
+      <FileSize>523153</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -1418,8 +1418,8 @@
     </GCSCMStandin>
     <GCSCMStandin>
       <FileName>Wheel Knuckle Rim Mounts\Knuckle Assem-Caliper Mount\Front Left Knuckle Assembley.SLDASM</FileName>
-      <SHA1>5575C20D815D59A5778E6DE4EBC28CE8CACDB4B1</SHA1>
-      <FileSize>1725982</FileSize>
+      <SHA1>ACCA967786D42FF3663791D87E811907A7AD9EE0</SHA1>
+      <FileSize>1726317</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
@@ -1490,6 +1490,20 @@
       <FileName>Powertrain\Mounts\Diff Chassis Mount.SLDPRT</FileName>
       <SHA1>286016BF2E92BE07F4D8760DC7045779FB5641B2</SHA1>
       <FileSize>95616</FileSize>
+      <ProEVersionedName />
+      <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
+    </GCSCMStandin>
+    <GCSCMStandin>
+      <FileName>McMaster Fasteners\Pedal Box Mounts.SLDPRT</FileName>
+      <SHA1>D89630FAA3D36DBA47ABE73E77DA80BCECEC2F16</SHA1>
+      <FileSize>404910</FileSize>
+      <ProEVersionedName />
+      <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
+    </GCSCMStandin>
+    <GCSCMStandin>
+      <FileName>McMaster Fasteners\Seat Mounts.SLDPRT</FileName>
+      <SHA1>733DFA9A46CA71FF5936C503BA64AC12AF1A372C</SHA1>
+      <FileSize>538956</FileSize>
       <ProEVersionedName />
       <LastUpdated>0001-01-01T00:00:00.0000000+00:00</LastUpdated>
     </GCSCMStandin>
