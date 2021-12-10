@@ -31,8 +31,8 @@ function [minimumSafetyFactor] = calcChassisRearImpact(driverWeight, Outterradiu
     %Nodal coordinates in milimeters
     Nodal_coordinates = zeros (nnode,2);
 
-        %First line is the nodal coordinate is the x coordinate
-        %Second line is the nodal coordinate is the y coordinate
+    %First line is the nodal coordinate is the x coordinate
+    %Second line is the nodal coordinate is the y coordinate
 
     Nodal_coordinates(1,1) = 0;
     Nodal_coordinates(1,2) = 0;
@@ -91,9 +91,9 @@ function [minimumSafetyFactor] = calcChassisRearImpact(driverWeight, Outterradiu
     %Connectivity table indicated the nodes that belong to each element
     Connect_table = zeros(nelem,nnode_per_element + 1);
 
-        %First line is node i that belongs to the element
-        %Second line is node j that belongs to the element
-        %Third line is the material flag
+    %First line is node i that belongs to the element
+    %Second line is node j that belongs to the element
+    %Third line is the material flag
         
     Connect_table(1,1) = 1;
     Connect_table(1,2) = 2;
@@ -227,8 +227,6 @@ function [minimumSafetyFactor] = calcChassisRearImpact(driverWeight, Outterradiu
     % Radius of tube B will be kept as a constant
     OutterradiustubeB = 12.7;
     InnerradiustubeB = (12.7 - 1.6);
-
-
 
     %Moment of inertia of tubes (I)
     InertiaPipeA = (pi/4)*((OutterradiustubeA^4)-(InnerradiustubeA^4));
@@ -394,7 +392,6 @@ function [minimumSafetyFactor] = calcChassisRearImpact(driverWeight, Outterradiu
 
     %External force vector
     Fa = zeros(nnode*ndof_per_node,1);
-
     Frontimpact = 18245.833; %Newtons
     Fa(49,1) = (Frontimpact/4);
     Fa(52,1) = (Frontimpact/4);
@@ -487,6 +484,7 @@ function [minimumSafetyFactor] = calcChassisRearImpact(driverWeight, Outterradiu
     SF(1,3) = 435/stresses(1,3); %Torsional Stress safety factor
     SF(1,4) = 435/stresses(1,4); %Y Bending Stress safety factor
 
+    % Find the minimum safety factor
     minimumSafetyFactor = min(SF);
 
     %Calculating the parameter that are used to calculate the stiffness matrix
@@ -504,7 +502,7 @@ function [minimumSafetyFactor] = calcChassisRearImpact(driverWeight, Outterradiu
         end
     end
 
-
+    % Calculate the length of elements
     function L = Length_of_elements(Nodal_coordinates,Connect_table)
         [nelem,~] = size(Connect_table);
         L = zeros(nelem,1);
@@ -598,6 +596,8 @@ function [minimumSafetyFactor] = calcChassisRearImpact(driverWeight, Outterradiu
         end
     end
 
+    % Calculating the rotation matrix to convert the stiffness matrix
+    % from local coordinates to global coordinates (and vice versa)
     function R = Rotation(Nodal_coordinates,Connect_table)
     [nelem,~] = size(Connect_table);
     R = zeros(6,6,nelem);
@@ -630,7 +630,7 @@ function [minimumSafetyFactor] = calcChassisRearImpact(driverWeight, Outterradiu
         end
     end
 
-
+    % Calculating the assemblage stiffness matrix of the chassis
     function Ka =  Assemblage_matrix(nnode,ndof_per_node,Connect_table,Kglobal)
         Ka = zeros(nnode*ndof_per_node,nnode*ndof_per_node);
         [~,~,nelem]=size(Kglobal);

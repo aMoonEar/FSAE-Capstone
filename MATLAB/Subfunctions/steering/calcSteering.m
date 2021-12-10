@@ -27,28 +27,35 @@ function [rackLength, finalShaftDiameterInner] = calcSteering(...
     trackWidth,...
     gravity)
 
-    shaftDiameterInner = initialShaftDiameterInner;
+    % set the current diameter of the inner shaft
+    shaftDiameterInner = initialShaftDiameterInner; % m
     
+    % Calculate the steering angle of the vehicle
     [innerSteeringAngle, outerSteeringAngle] = calcSteeringAngle(...
     corneringRadius,...
     lengthCOMToRearTire,...
     lengthCOMToFrontTire,...
     trackWidth);
 
+    % Calculate the total rack length
     [rackLength] = calcRackLength(...
     steeringWheelRadius,...
     innerSteeringAngle);
 
-    % add a while loop here where you calculate the shaft diameter
-
+    % Calculate the initial safety factor of the steering shaft
     [safetyFactorShaft] = calcShaftSafety(...
     innerSteeringAngle,...
     coefficientRoad,...
     normalForceFrontStatic,...
     shaftDiameterInner);
 
+    % Increase the thickness of the steering shaft until the safety
+    % factor is at least 3.5
     while safetyFactorShaft < 3.5
+        % Decrement the inner diameter of the shaft by 0.00025m
         shaftDiameterInner = shaftDiameterInner - 0.00025;
+
+        % Re-calculate the safety factor of the steering shaft
         [safetyFactorShaft] = calcShaftSafety(...
             innerSteeringAngle,...
             coefficientRoad,...
@@ -56,7 +63,8 @@ function [rackLength, finalShaftDiameterInner] = calcSteering(...
             shaftDiameterInner);
     end
     
-    finalShaftDiameterInner = shaftDiameterInner;
+    % set the final inner diameter of the shaft
+    finalShaftDiameterInner = shaftDiameterInner; % m
     
 end
 
@@ -83,7 +91,10 @@ function [rackLength] = calcRackLength(...
     steeringWheelRadius,...
     innerSteeringAngle)
 
+    % Calculate the steering ratio of the vehicle
     steeringRatio = pi/innerSteeringAngle;
+
+    % Calculate the total rack length
     rackLength = 2*((2/3)*pi*steeringWheelRadius)/steeringRatio;
 
 end

@@ -76,7 +76,8 @@ function [totalMass,...
     COMFromGroundY = COMFromGroundY/1000; % m
     COMFromGroundZ = COMFromGroundZ/1000; % m
     
-    sprungMass = 111.679 + driverWeight;
-    unsprungMass = 80.2065;
+    % Calculate the sprung mass and unsprung mass of the vehicle
+    sprungMass = 111.679 + driverWeight; % kg
+    unsprungMass = 80.2065; % kg
     
 end

@@ -1,12 +1,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Function: 
+%   Function: DesignCode
 %
-%   Parameters: 
+%   Parameters: driverWeight (kg), corneringRadius (m),
+%   suspensionFeel
 % 
-%   Outputs: 
 %
-%   calcWingDownforce  
+%   Description: DesignCode coordinates all the subfunctions and outputs all of the 
+%   calculated parameters to the equation solidworks files  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function DesignCode(driverWeight, corneringRadius, suspensionFeel)
    
@@ -36,20 +37,20 @@ function DesignCode(driverWeight, corneringRadius, suspensionFeel)
     
     gravity = 9.81; % m/s^2
     coefficientDrag = 0.92;
-    radiusOfTire = 0.25527;
+    radiusOfTire = 0.25527; % m
     maxVelocity = 105/3.6; %m/s
-    densityAir = 1.225;
-    trackWidth = 1.2538;
+    densityAir = 1.225; % kg/m^3
+    trackWidth = 1.2538; % m
     
-    frontalAreaCar = 1.5412;
-    frontalAreaRearWing = 0.6425;
-    frontalAreaFrontWing = 0.5312;
+    frontalAreaCar = 1.5412; % m^2
+    frontalAreaRearWing = 0.6425; % m^2
+    frontalAreaFrontWing = 0.5312; % m^2
     coefficientLift = 0.29;
     coefficientLiftWing = 2.34;
     coefficientWing = 3.074;
     coefficientRoad = 0.9;
     
-    shaftDiameterInner = 0.025;
+    shaftDiameterInner = 0.025; %m
     steeringWheelRadius = 0.1; %m
     
     
@@ -90,6 +91,8 @@ function DesignCode(driverWeight, corneringRadius, suspensionFeel)
         maxVelocity,...
         gravity);
     
+    % Complete the modelling of the steering and output the rack length
+    % and the inner diameter of the steering shaft
     [rackLength, shaftDiameterInner] = calcSteering(...
     totalMass,...
     corneringRadius,...
@@ -119,6 +122,8 @@ function DesignCode(driverWeight, corneringRadius, suspensionFeel)
     trackWidth,...
     gravity);
 
+    % Complete the modelling of the suspension to get the innerDiameter of the control arm, damper wall thickness,
+    % diameter of the orifice, mean coil diameter, and wire diameter
     [innerDiameter, damperwallThickness, innerHousingDiameterOfDamper, orificeDiameter, meanCoilDiameter, wireDiameter] = calcSuspension(...
     fxLeftWheelFront,...
     fxLeftWheelRear,...
@@ -134,9 +139,14 @@ function DesignCode(driverWeight, corneringRadius, suspensionFeel)
 
    
     %Declaring text files to be modified
-    %Files
     log_file = 'H:\\groupFSAE2\\Log\\groupFSAE2_LOG.TXT';
     
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %                   Output Parameters
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    % Output each parameter to their corresponding solidworks
+    % equation file
     outputChassis(InnerradiustubeA, InnerWidthtubeB);
     outputControlArm(innerDiameter);
     outputDamperHousing(damperwallThickness, innerHousingDiameterOfDamper);

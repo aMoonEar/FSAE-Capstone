@@ -5,9 +5,9 @@
 % 
 %   Outputs: 
 %
-%   calcWingDownforce  
+%   Description: calcWingDownforce  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [normalForceFrontWheel, normalForceRearWheel, normalForceFrontAcceleration, normalForceRearAcceleration, normalForceFrontStatic, normalForceRearStatic, fxLeftWheelFront, fxLeftWheelRear, fyLeftWheelFront, fyLeftWheelRear, fzLeftWheelFront, fzLeftWheelRear, frontBias, rearBias] = calcModeling(...
+function [normalForceFrontWheelDownforce, normalForceRearWheelDownforce, normalForceFrontAcceleration, normalForceRearAcceleration, normalForceFrontStatic, normalForceRearStatic, fxLeftWheelFront, fxLeftWheelRear, fyLeftWheelFront, fyLeftWheelRear, fzLeftWheelFront, fzLeftWheelRear, frontBias, rearBias] = calcModeling(...
     totalMass,...
     lengthCOMToRearTire,...
     lengthCOMToFrontTire,...
@@ -32,7 +32,8 @@ function [normalForceFrontWheel, normalForceRearWheel, normalForceFrontAccelerat
     maxVelocity,...
     gravity)
  
-    [normalForceFrontWheel, normalForceRearWheel] = calcDownforce(...
+    % Calculate the normal downforce and drag acting on the vehicle
+    [normalForceFrontWheelDownforce, normalForceRearWheelDownforce] = calcDownforce(...
     totalMass,...
     densityAir,...
     gravity,...
@@ -52,6 +53,7 @@ function [normalForceFrontWheel, normalForceRearWheel, normalForceFrontAccelerat
     coefficientRoad,...
     maxVelocity);
 
+    % Calculate the normal acceleration forces acting on the vehicle
     [normalForceFrontAcceleration, normalForceRearAcceleration] = calcAcceleration(...
     totalMass,...
     gravity,...
@@ -60,12 +62,14 @@ function [normalForceFrontWheel, normalForceRearWheel, normalForceFrontAccelerat
     lengthCOMToRearTire,...
     coefficientRoad);
 
+    % Calculate the normal static forces acting on the vehicle
     [normalForceFrontStatic, normalForceRearStatic] = calcStatic(...
     totalMass,...
     gravity,...
     lengthCOMToFrontTire,...
     lengthCOMToRearTire);
 
+    % Calculate the normal forces acting on each wheel & biases when the car is cornering towards the left
     [fxLeftWheelFront, fxLeftWheelRear, fyLeftWheelFront, fyLeftWheelRear, fzLeftWheelFront, fzLeftWheelRear, frontBias, rearBias] = calcCornering(...
     totalMass,...
     gravity,...
@@ -92,11 +96,12 @@ end
 %   coefficientWing, coefficientDrag,
 %   coefficientLift, maxVelocity (m/s)
 % 
-%   Outputs: normalForceFrontWheel (N), normalForceRearWheel (N)
+%   Outputs: normalForceFrontWheelDownforce (N), normalForceRearWheelDownforce (N)
 %
-%   calcWingDownforce calculates the downforce on the wings to determine the normal force on each wheel 
+%   Description: calcDownforce calculates the downforce on the wings with drag 
+%   to determine the normal force on each wheel 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [normalForceFrontWheel, normalForceRearWheel] = calcDownforce(...
+function [normalForceFrontWheelDownforce, normalForceRearWheelDownforce] = calcDownforce(...
     totalMass,...
     densityAir,...
     gravity,...
@@ -117,6 +122,7 @@ function [normalForceFrontWheel, normalForceRearWheel] = calcDownforce(...
     maxVelocity)
 
     % Calculate the downforce of the front and rear wing
+    % The derivation of this equation can be found in the modelling section of the analysis report
     downforceFrontWing = 0.5*densityAir*frontalAreaFrontWing*coefficientWing*(maxVelocity^2); % N
     downforceRearWing = 0.5*densityAir*frontalAreaRearWing*coefficientWing*(maxVelocity^2); % N
     
@@ -124,6 +130,7 @@ function [normalForceFrontWheel, normalForceRearWheel] = calcDownforce(...
     averageDragCoefficient = coefficientDrag/(frontalAreaRearWing+frontalAreaFrontWing); % Unitless
       
     % Calculate the drag force in the front and rear
+    % The derivation of this equation can be found in the modelling section of the analysis report
     dragForceFront = 0.5*densityAir*averageDragCoefficient*frontalAreaFrontWing*(maxVelocity^2); % N
     dragForceRear = 0.5*densityAir*averageDragCoefficient*frontalAreaRearWing*(maxVelocity^2); % N
     
@@ -144,8 +151,9 @@ function [normalForceFrontWheel, normalForceRearWheel] = calcDownforce(...
     maxDeceleration = maxAllowableFrictionTiresRoad/totalMass; % m/s^2
 
     % Normal force (downforce and drag) on both wheels during deceleration
-    normalForceFrontWheel = (((totalMass*gravity-liftForce+downforceFrontWing+downforceRearWing)*lengthCOMToRearTire+((totalMass*maxDeceleration+dragForceFront+dragForceRear)*COMFromGroundY)+downforceRearWing*lengthCOMToFrontWing+dragForceFront*heightCOMToFrontWing+dragForceRear*heightCOMToRearWing-downforceFrontWing*lengthCOMToFrontWing))/((2*lengthCOMToFrontTire)+2*lengthCOMToRearTire); % N
-    normalForceRearWheel = (((totalMass*gravity)-liftForce+downforceFrontWing+downforceRearWing)*lengthCOMToFrontTire+((((-totalMass*maxDeceleration)-dragForceFront-dragForceRear))*COMFromGroundY)-downforceRearWing*lengthCOMToRearWing-dragForceFront*heightCOMToFrontWing-dragForceRear*heightCOMToRearWing+downforceFrontWing*lengthCOMToFrontWing)/((2*lengthCOMToFrontTire)+(2*lengthCOMToRearTire)); % N 
+    % The derivation of this equation can be found in the modelling section of the analysis report
+    normalForceFrontWheelDownforce = (((totalMass*gravity-liftForce+downforceFrontWing+downforceRearWing)*lengthCOMToRearTire+((totalMass*maxDeceleration+dragForceFront+dragForceRear)*COMFromGroundY)+downforceRearWing*lengthCOMToFrontWing+dragForceFront*heightCOMToFrontWing+dragForceRear*heightCOMToRearWing-downforceFrontWing*lengthCOMToFrontWing))/((2*lengthCOMToFrontTire)+2*lengthCOMToRearTire); % N
+    normalForceRearWheelDownforce = (((totalMass*gravity)-liftForce+downforceFrontWing+downforceRearWing)*lengthCOMToFrontTire+((((-totalMass*maxDeceleration)-dragForceFront-dragForceRear))*COMFromGroundY)-downforceRearWing*lengthCOMToRearWing-dragForceFront*heightCOMToFrontWing-dragForceRear*heightCOMToRearWing+downforceFrontWing*lengthCOMToFrontWing)/((2*lengthCOMToFrontTire)+(2*lengthCOMToRearTire)); % N 
 
     
 end
@@ -162,7 +170,7 @@ end
 %   Outputs: normalForceFrontAcceleration (N),
 %   normalForceRearAcceleration (N)
 %
-%   calcAcceleration calculates the normal force on the front and rear of
+%   Description: calcAcceleration calculates the normal force on the front and rear of
 %   the vehicle while accelerating
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [normalForceFrontAcceleration, normalForceRearAcceleration] = calcAcceleration(...
@@ -174,10 +182,11 @@ function [normalForceFrontAcceleration, normalForceRearAcceleration] = calcAccel
     coefficientRoad)
 
     % Calculate the maximum acceleration 
+    % The derivation of this equation can be found in the modelling section of the analysis report
     maxAcceleration = ((-coefficientRoad*lengthCOMToFrontTire))/(COMFromGroundY*coefficientRoad-lengthCOMToFrontTire-lengthCOMToRearTire)*gravity; % m/s^2
     
-    % Calculate the normal force on the front and rear wheels during
-    % acceleration
+    % Calculate the normal force on the front and rear wheels during acceleration
+    % The derivation of this equation can be found in the modelling section of the analysis report
     normalForceFrontAcceleration = ((1/2)*totalMass*gravity*(((lengthCOMToRearTire)/(lengthCOMToRearTire+lengthCOMToFrontTire))-((COMFromGroundY/(lengthCOMToRearTire+lengthCOMToFrontTire))*(maxAcceleration/gravity))))*2; % N
     normalForceRearAcceleration = ((1/2)*totalMass*gravity*(((lengthCOMToFrontTire)/(lengthCOMToRearTire+lengthCOMToFrontTire))+((COMFromGroundY/(lengthCOMToRearTire+lengthCOMToFrontTire))*(maxAcceleration/gravity))))*2; % N
 
@@ -192,7 +201,7 @@ end
 %   
 %   Outputs: normalForceFrontStatic (N), normalForceRearStatic (N)
 %
-%   calcStatic calculates the static normal force on the front and rear of the vehicle
+%   Description: calcStatic calculates the static normal force on the front and rear of the vehicle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [normalForceFrontStatic, normalForceRearStatic] = calcStatic(...
     totalMass,...
@@ -200,8 +209,8 @@ function [normalForceFrontStatic, normalForceRearStatic] = calcStatic(...
     lengthCOMToFrontTire,...
     lengthCOMToRearTire)
     
-    % Calculate the normal force on the front and rear tires when the
-    % vehicle is static
+    % Calculate the normal force on the front and rear tires when the vehicle is static
+    % The derivation of this equation can be found in the modelling section of the analysis report
     normalForceFrontStatic = (totalMass*gravity*((lengthCOMToRearTire/(lengthCOMToFrontTire+lengthCOMToRearTire)))); % N
     normalForceRearStatic = (totalMass*gravity*((lengthCOMToFrontTire/(lengthCOMToFrontTire+lengthCOMToRearTire)))); % N
 
@@ -220,7 +229,7 @@ end
 %   
 %   Outputs: 
 %
-%   calcCornering calculates the front/rear bias, and normal force on the
+%   Description: calcCornering calculates the front/rear bias, and normal force on the
 %   left wheel while cornering on each axis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [fxLeftWheelFront, fxLeftWheelRear, fyLeftWheelFront, fyLeftWheelRear, fzLeftWheelFront, fzLeftWheelRear, frontBias, rearBias] = calcCornering(...
@@ -238,7 +247,7 @@ function [fxLeftWheelFront, fxLeftWheelRear, fyLeftWheelFront, fyLeftWheelRear, 
     coefficientRoad)
 
     % Calculate the normal force of both wheels while cornering
-    normalForceRearWheelCornering = (totalMass*gravity)*((lengthCOMToFrontTire)/(lengthCOMToRearTire+lengthCOMToFrontTire)); % N
+    normalForceRearWheelDownforceCornering = (totalMass*gravity)*((lengthCOMToFrontTire)/(lengthCOMToRearTire+lengthCOMToFrontTire)); % N
     
     % Calculate the front and rear bias during cornering
     frontBias = lengthCOMToRearTire/(lengthCOMToFrontTire+lengthCOMToRearTire); % decimal percentage
@@ -253,10 +262,9 @@ function [fxLeftWheelFront, fxLeftWheelRear, fyLeftWheelFront, fyLeftWheelRear, 
     % Calculate the centripetal force on the vehicle at a cornering radius of 50m
     centripetalForce = (totalMass*(maxVelocityCornering^2))/50; % N
                                         
-    % Calculate the normal force on each wheel during the largest corner on
-    % each axis
-    % only the left wheel is analysed because it is undergoing the most
-    % stress
+    % Calculate the normal force on each wheel during the largest corner on each axis
+    % only the left wheel is analysed because it is undergoing the most stress
+    % The derivation of this equation can be found in the modelling section of the analysis report
     fyLeftWheelFront = ((normalForceFrontStatic+(aeroWithoutVelocity*frontBias*(maxVelocityCornering^2)))*lengthToRightWheelCOM+(COMFromGroundY*centripetalForce)*(frontBias))/(2*lengthToRightWheelCOM); % N
     fyLeftWheelRear = ((normalForceRearStatic+(aeroWithoutVelocity*rearBias*(maxVelocityCornering^2)))*lengthToRightWheelCOM+(COMFromGroundY*centripetalForce)*(rearBias))/(2*lengthToRightWheelCOM); % N
     fyRightWheelFront = ((normalForceFrontStatic+(aeroWithoutVelocity*frontBias*(maxVelocityCornering^2)))*lengthToRightWheelCOM-(COMFromGroundY*centripetalForce)*(frontBias))/(2*lengthToRightWheelCOM); % N
