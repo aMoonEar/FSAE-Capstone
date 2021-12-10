@@ -57,8 +57,6 @@ function [rackLength, finalShaftDiameterInner] = calcSteering(...
     end
     
     finalShaftDiameterInner = shaftDiameterInner;
-    disp(safetyFactorShaft);
-
     
 end
 

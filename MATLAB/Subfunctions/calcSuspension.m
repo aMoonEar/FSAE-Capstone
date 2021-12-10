@@ -19,6 +19,11 @@ function [innerDiameter] = calcSuspension(...
     frontBias,...
     rearBias)
 
+    FxFront = -FxFront;
+    FxRear = -FxRear;
+    FzFront = -FzFront;
+    FzRear = -FzRear;
+
     distanceToWheelCenter = 225.27; %mm
 
     frontunsprungCornerMass =sprungMass*frontBias/2;
@@ -73,6 +78,7 @@ function [innerDiameter] = calcSuspension(...
         outerDiameter);
 
         minSafetyFactor = min([safetyFactorCriticalLoadFront, safetyFactorAxialStressFront, safetyFactorCriticalLoadRear, safetyFactorAxialStressRear]);
+        disp(minSafetyFactor);
     end
     
     [frontspringRateOfSuspension, frontdampingCoefficientOfSuspension, rearspringRateOfSuspension, reardampingCoefficientOfSuspension] = VibrationAnalysisForSuspension(...
@@ -111,7 +117,7 @@ function [outputForces] = calcFrontMatrix(...
     
     % Calculate the moment on each axis
     momentX = forceZ * distanceToWheelCenter*-1; % Nm
-    momentY = forceY *30;
+    momentY = forceY * 30;
     momentZ = forceX * 1000; % Nm
 
     % 6 x 6 of unit vectors and cross product of the six suspension members
@@ -211,10 +217,10 @@ function [safetyFactorCriticalLoad, safetyFactorAxialStress] = calcStress(...
     
     % Calculate the critical load & safety factor
     criticalLoad =((pi^2*elasticModulus*momentOfInertia)/((columnEffectiveLengthFactor*minimumLength)^2)); % N
-    safetyFactorCriticalLoad = criticalLoad/minimumForce*-1;
+    safetyFactorCriticalLoad = abs(criticalLoad/minimumForce*-1);
     
     % Calculate the axial stress and safety factor
     axialStress = maximumForce/crossSectionArea; % MPa
-    safetyFactorAxialStress = yieldStrength/axialStress;
+    safetyFactorAxialStress = abs(yieldStrength/axialStress);
 
 end

@@ -71,10 +71,10 @@ function [totalMass,...
     lengthToRightWheelCOM = 0.5 - (COMFromGroundX/1000);% mm
     lengthToLeftWheelCOM = 1 - lengthToRightWheelCOM;% mm
     
-    % Convert to m
-    COMFromGroundX = COMFromGroundX/1000; % m
-    COMFromGroundY = COMFromGroundY/1000; % m
-    COMFromGroundZ = COMFromGroundZ/1000; % m
+    % Add the height above the ground
+    COMFromGroundX = COMFromGroundX; % mm
+    COMFromGroundY = COMy; % mm
+    COMFromGroundZ = COMz; % mm
     
     sprungMass = 111.679 + driverWeight;
     unsprungMass = 80.2065;

@@ -40,14 +40,6 @@ function [OutterradiustubeA, InnerradiustubeA, OutterWidthtubeB, InnerWidthtubeB
     
         safetyFactor = min([minimumSafetyFactorFront, minimumSafetyFactorRear]);
     end
-
-    disp('final safety factor for chassis');
-    disp(safetyFactor);
-    disp('inner width tube B');
-    disp(InnerWidthtubeB);
-    disp('inner radius tube A');
-    disp(InnerradiustubeA);
-    
     
     
 end
