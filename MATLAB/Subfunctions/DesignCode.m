@@ -10,6 +10,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function DesignCode(driverWeight, corneringRadius, suspensionFeel)
    
+    % Adding all necessary paths
+    addpath('H:\groupFSAE2\MATLAB\Subfunctions\outputEquations');
+    addpath('H:\groupFSAE2\MATLAB\Subfunctions\chassis');
+    addpath('H:\groupFSAE2\MATLAB\Subfunctions\suspension');
+    addpath('H:\groupFSAE2\MATLAB\Subfunctions\modelling');
+    addpath('H:\groupFSAE2\MATLAB\Subfunctions\steering');
+    
     % Output log file location
     logFile = 'H:\groupFSAE2\Log\groupFSAE2_LOG.txt';
     
@@ -27,10 +34,10 @@ function DesignCode(driverWeight, corneringRadius, suspensionFeel)
     %                   Constants
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    gravity = 9.81;
+    gravity = 9.81; % m/s^2
     coefficientDrag = 0.92;
     radiusOfTire = 0.25527;
-    maxVelocity = 105/3.6;
+    maxVelocity = 105/3.6; %m/s
     densityAir = 1.225;
     trackWidth = 1.2538;
     
@@ -44,6 +51,7 @@ function DesignCode(driverWeight, corneringRadius, suspensionFeel)
     
     shaftDiameterInner = 0.025;
     steeringWheelRadius = 0.1; %m
+    
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %                   Calculations
@@ -138,12 +146,4 @@ function DesignCode(driverWeight, corneringRadius, suspensionFeel)
     outputSecondaryShaft(shaftDiameterInner*1000);
     outputSpring(meanCoilDiameter, wireDiameter);
     
-     
-	%Write the equations file(s) (FILE(s) LINKED TO SOLIDWORKS).
-	%You can make a different file for each section of your project (ie one for steering, another for brakes, etc...)
-	%or one single large file that includes all the equations. Its up to you!
-    %fid = fopen(shaft_file,'w+t');
-    %fprintf(fid,strcat('"Diameter"=',num2str(new_diameter),'\n'));
-    %fprintf(fid,strcat('"Length"=',num2str(shaft_length),'\n'));
-    %fclose(fid);
 end
