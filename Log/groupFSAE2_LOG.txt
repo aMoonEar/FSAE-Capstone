@@ -3,4 +3,4 @@
 ************************************************************************
 Mass of the driver = 75 kg
 Cornering Radius = 3.5 m
-Suspension damper amount = NaN 
+Suspension damper amount = 0.25 

@@ -104,8 +104,15 @@ set(handles.figure1,'Name','Group FSAE2 // CADCAM 2021');
 
 % Display uOttawa logo on the GUI
 axis image
+axes(handles.uOttawa);
+H:\groupFSAE2\MATLAB\GUI Images\uOttawaLogo.jpg
+uOttawaLogo = imread('H:\groupFSAE2\MATLAB\GUI Images\uOttawaLogo.jpg');
+imshow(uOttawaLogo);
+
+% Display uOttawa logo on the GUI
+axis image
 axes(handles.fsae);
-fsaeLogo = imread('H:\groupFSAE2\MATLAB\GUI Images\SAE_logo.png');
+fsaeLogo = imread('C:\Users\16138\Documents\FSAE-Capstone\MATLAB\GUI Images\SAE_logo.png');
 imshow(fsaeLogo);
 
 %Add the 'subfunctions' folder to the path so that subfunctions can be
@@ -165,7 +172,9 @@ else
     else 
         suspensionFeel = str2double(suspensionFeel);
     end
-        
+    
+    disp(suspensionFeel);
+    
     % Calling the design code with all inputted parameters
     DesignCode(driverWeight, corneringRadius, suspensionFeel);
 
@@ -177,12 +186,14 @@ else
     msgbox('Successfully optimized! Please re-build the SolidWorks assembly');
 
     %Show the results on the GUI.
-    log_file = 'H:\groupFSAE2\Log\groupFSAE2_LOG.TXT';
-    fid = fopen(log_file,'r'); %Open the log file for reading
-    S=char(fread(fid)'); %Read the file into a string
-    fclose(fid);
+    %log_file = 'H:\groupABC\Log\groupABC_LOG.TXT';
+    %fid = fopen(log_file,'r'); %Open the log file for reading
+    %S=char(fread(fid)'); %Read the file into a string
+    %fclose(fid);
 
-    set(handles.TXT_log,'String',S); %write the string into the textbox
+    %set(handles.TXT_log,'String',S); %write the string into the textbox
+    %set(handles.TXT_path,'String',log_file); %show the path of the log file
+    %set(handles.TXT_path,'Visible','on');
 end
 
 % =========================================================================
