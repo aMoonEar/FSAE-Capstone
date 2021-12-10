@@ -1,3 +1,2 @@
-"rack_length"= 69.5797mm
-
-"Rack Length@Sketch1" = "rack_length"
+﻿"rack_length"= 200mm
+"Rack Length@Sketch1" = "rack_length"
