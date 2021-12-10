@@ -79,5 +79,30 @@ function [totalMass,...
     % Calculate the sprung mass and unsprung mass of the vehicle
     sprungMass = 111.679 + driverWeight; % kg
     unsprungMass = 80.2065; % kg
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %                        Chassis Tube Output                          %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    logFile = 'H:\groupFSAE2\Log\groupFSAE2_LOG.txt';
+    fileID = fopen(logOutput,'at');
+    fprintf(fileID,'******************************************************************************\n');
+    fprintf(fileID,'                             Center of Mass Calculations \n');
+    fprintf(fileID,'******************************************************************************\n\n');
+    fprintf(fileID,'------------ Center of Mass ----------------\n\n');
+    fprintf(fileID,strcat('Total mass of the vehicle = ',32, num2str (totalMass),' kg\n'));
+    fprintf(fileID,strcat('Center of Mass x-axis = ',32, num2str (COMx),' mm\n\n'));
+    fprintf(fileID,strcat('Center of Mass x-axis above ground = ',32, num2str (COMx),' m\n\n'));
+
+    fprintf(fileID,strcat('Center of Mass y-axis = ',32, num2str (COMy),' mm\n\n'));
+    fprintf(fileID,strcat('Center of Mass y-axis above ground = ',32, num2str (COMy),' m\n\n'));
+
+    fprintf(fileID,strcat('Center of Mass z-axis = ',32, num2str (COMz),' mm\n\n'));
+    fprintf(fileID,strcat('Center of Mass z-axis above ground = ',32, num2str (COMz),' m\n\n'));
+
+    fprintf(fileID,strcat('Total sprung mass = ',32, num2str (sprungMass),' kg\n\n'));
+    fprintf(fileID,strcat('Total unsprung mass = ',32, num2str (unsprungMass),' kg\n\n'));
+    fclose(fileID); % Close file
+
     
 end

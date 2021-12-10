@@ -66,6 +66,25 @@ function [rackLength, finalShaftDiameterInner] = calcSteering(...
     % set the final inner diameter of the shaft
     finalShaftDiameterInner = shaftDiameterInner; % m
     
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %                        Steering Output                            %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    logFile = 'H:\groupFSAE2\Log\groupFSAE2_LOG.txt';
+    fileID = fopen(logOutput,'at');
+    fprintf(fileID,'******************************************************************************\n');
+    fprintf(fileID,'                             Steering Output \n');
+    fprintf(fileID,'******************************************************************************\n\n');
+
+    fprintf(fileID,strcat('Length of steering rack = ',32, num2str (rackLength),' m\n'));
+    fprintf(fileID,strcat('Inner diameter of steering shaft = ',32, num2str (finalShaftDiameterInner),' m\n'));
+    fprintf(fileID,strcat('Outer Steering Angle = ',32, num2str (outerSteeringAngle),' rad\n'));
+    fprintf(fileID,strcat('Inner Steering Angle = ',32, num2str (innerSteeringAngle),' rad\n'));
+    fprintf(fileID,strcat('Safety Factor of Steering Shaft = ',32, num2str (safetyFactorShaft),' \n'));
+
+    fclose(fileID); % Close file
+
+
 end
 
 
@@ -95,7 +114,7 @@ function [rackLength] = calcRackLength(...
     steeringRatio = pi/innerSteeringAngle;
 
     % Calculate the total rack length
-    rackLength = 2*((2/3)*pi*steeringWheelRadius)/steeringRatio;
+    rackLength = 2*((2/3)*pi*steeringWheelRadius)/steeringRatio; % m
 
 end
 
@@ -161,6 +180,7 @@ function [safetyFactorShaft] = calcShaftSafety(...
     % Calculate the safety factor of the steering shaft using the shear stress
     shearStressPrimaryShaft = (16*stressConcentration*torqueFromShaft*(shaftDiameterOuter))/momentOfInertia; % Pa
     safetyFactorShaft =shearYieldStrength/shearStressPrimaryShaft;
+
 
 end
 

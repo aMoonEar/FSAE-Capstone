@@ -41,6 +41,22 @@ function [OuterRadiusTubeA, InnerRadiusTubeA, OutterWidthTubeB, InnerWidthTubeB]
         % find the minimum safety factor
         safetyFactor = min([minimumSafetyFactorFront, minimumSafetyFactorRear]);
     end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %                        Chassis Tube Output                          %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    logFile = 'H:\groupFSAE2\Log\groupFSAE2_LOG.txt';
+    fileID = fopen(logOutput,'at');
+    fprintf(fileID,'******************************************************************************\n');
+    fprintf(fileID,'                             Optimized Chassis Tube Design \n');
+    fprintf(fileID,'******************************************************************************\n\n');
+    fprintf(fileID,'------------ Chassis Output ----------------\n\n');
+    fprintf(fileID,strcat('Inner width of the square tubes of chassis = ',32, num2str (InnerWidthTubeB),' mm\n'));
+    fprintf(fileID,strcat('Inner radius of the circlar tubes of the chassis = ',32, num2str (InnerRadiusTubeA),' mm\n\n'));
+    fprintf(fileID,strcat('Safety Factor of the front of chassis = ',32, num2str(minimumSafetyFactorFront),' \n'));
+    fprintf(fileID,strcat('Safety Factor of the rear of chassis = ',32, num2str(minimumSafetyFactorRear),'.\n'));
+    fclose(fileID); % Close file
     
     
 end

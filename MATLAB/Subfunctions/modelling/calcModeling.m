@@ -84,6 +84,36 @@ function [normalForceFrontWheelDownforce, normalForceRearWheelDownforce, normalF
     coefficientLiftWing,...
     coefficientRoad);
     
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %                        Modelling Output                            %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    logFile = 'H:\groupFSAE2\Log\groupFSAE2_LOG.txt';
+    fileID = fopen(logOutput,'at');
+    fprintf(fileID,'******************************************************************************\n');
+    fprintf(fileID,'                             Modelling Output \n');
+    fprintf(fileID,'******************************************************************************\n\n');
+    fprintf(fileID,strcat('Normal Force Front Wheel Downforce = ',32, num2str (normalForceFrontWheelDownforce),' N\n'));
+    fprintf(fileID,strcat('Normal Force Rear Wheel Downforce = ',32, num2str (normalForceRearWheelDownforce),' N\n'));
+
+    fprintf(fileID,strcat('Normal Force Front Acceleration FOrce = ',32, num2str (normalForceFrontAcceleration),' N\n'));
+    fprintf(fileID,strcat('Normal Force Rear Acceleration Force = ',32, num2str (normalForceRearAcceleration),' N\n'));
+
+    fprintf(fileID,strcat('Normal Force Front Static = ',32, num2str (normalForceFrontStatic),' N\n'));
+    fprintf(fileID,strcat('Normal Force Rear Static = ',32, num2str (normalForceRearStatic),' N\n'));
+
+    fprintf(fileID,strcat('FX Left Wheel Front Cornering= ',32, num2str (fxLeftWheelFront),' N\n'));
+    fprintf(fileID,strcat('FX Left Wheel Rear Cornering= ',32, num2str (fxLeftWheelRear),' N\n'));
+
+    fprintf(fileID,strcat('FY Left Wheel Front Cornering= ',32, num2str (fyLeftWheelFront),' N\n'));
+    fprintf(fileID,strcat('FY Left Wheel Rear Cornering= ',32, num2str (fyLeftWheelRear),' N\n'));
+
+    fprintf(fileID,strcat('FZ Left Wheel Front Force Cornering= ',32, num2str (fzLeftWheelFront),' N\n'));
+    fprintf(fileID,strcat('FZ Left Wheel Rear Force Cornering= ',32, num2str (fzLeftWheelRear),' N\n'));
+
+    fprintf(fileID,strcat('Front Bias = ',32, num2str (frontBias),'\n'));
+    fprintf(fileID,strcat('Rear Bias = ',32, num2str (rearBias),'\n'));
+    fclose(fileID); % Close file
 
 end
 

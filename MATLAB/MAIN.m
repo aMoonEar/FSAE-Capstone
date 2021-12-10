@@ -132,11 +132,6 @@ else
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %                           Range Checking
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %Perform basic range checking (for those that can go out of range)
-    %if isnan(shaft_length) || (shaft_length <=0) || (shaft_length > 50)
-    %    msgbox('The shaft length specified is not an acceptable value. Please correct it.','Cannot generate!','warn');
-    %    return;
-    %end
 
     % Check driver mass inputted 
     if (driverWeight < get(handles.Sliderdriver_weight, 'Min') || driverWeight > get(handles.Sliderdriver_weight, 'Max') || isnan(driverWeight) )

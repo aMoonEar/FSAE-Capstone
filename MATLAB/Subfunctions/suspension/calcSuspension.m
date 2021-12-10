@@ -108,6 +108,28 @@ function [innerDiameter, damperwallThickness, innerHousingDiameterOfDamper, orif
         frontpushrodforce,...
         springrate_N_per_mm );
 
+
+        
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %                        Suspension Output                            %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    logFile = 'H:\groupFSAE2\Log\groupFSAE2_LOG.txt';
+    fileID = fopen(logOutput,'at');
+    fprintf(fileID,'******************************************************************************\n');
+    fprintf(fileID,'                             Suspension Output \n');
+    fprintf(fileID,'******************************************************************************\n\n');
+
+    fprintf(fileID,strcat('Inner Diameter of control arm = ',32, num2str (innerDiameter),' mm\n'));
+    fprintf(fileID,strcat('Damper Wall Thickness = ',32, num2str (damperwallThickness),' m\n'));
+    fprintf(fileID,strcat('Inner Housing Diameter Of Damper = ',32, num2str (innerHousingDiameterOfDamper),' m\n'));
+    fprintf(fileID,strcat('Orifice Diameter of Piston inside Damper = ',32, num2str (orificeDiameter),' m\n'));
+    fprintf(fileID,strcat('Mean Coil Diameter = ',32, num2str (meanCoilDiameter),' mm\n'));
+    fprintf(fileID,strcat('Wire Diameter = ',32, num2str (wireDiameter),' mm\n'));
+
+    fclose(fileID); % Close file
+
+
 end
 
 
