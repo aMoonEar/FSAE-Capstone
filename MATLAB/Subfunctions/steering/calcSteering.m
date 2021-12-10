@@ -119,47 +119,47 @@ function [safetyFactorShaft] = calcShaftSafety(...
     % stress. This is the lateral force required to turn the steering arm
     heimJointReactionForce = (momentOfFriction)/((distancePinAxis_HeimJoint*cos(-innerSteeringAngle-angleSteeringArm_Knuckle))); %N
     
+    % Calculate the angle in the tie rod of the heim joint
     angleTieRodHeimJoint = 0.149762323; %rad
 
-    tieRodInputForce = heimJointReactionForce/((cos(angleTieRodHeimJoint)));
+    % Calculate the tie rod input force
+    tieRodInputForce = heimJointReactionForce/((cos(angleTieRodHeimJoint))); % N
 
+    % Calculate the angle from the pins to the tie rod
     anglePinsToTieRod = 30*3.14/180; % rad
 
-    pinReactionForcesRackX =tieRodInputForce*cos((anglePinsToTieRod));
+    % Calculate the reaction forces on the pin in the x-axis
+    pinReactionForcesRackX =tieRodInputForce*cos((anglePinsToTieRod)); % N
 
+    % Calculate the tangential force on the tack
     tangentialForceRack =pinReactionForcesRackX*2; % N
 
+    % Set the constants of the pinion, key, ujoint, and shaft
     pinionDiameter = 0.0889; %m
-
-    torqueTransmitted = (tangentialForceRack*pinionDiameter)/2; % Nm
-
     keyWidth = 0.004; %m
-
     shaftDiameterOuter = 0.0254; %m
-
-    % 120
-    pinKeyReactionForce = torqueTransmitted/((shaftDiameterOuter/2)+(keyWidth/2)); % N
-
     uJointArmThickness = 0.00476; % m
     distanceBetweenUJointArms = 0.0635; %m
 
-    % 131
-    forceUJointSecondaryShaft = (pinKeyReactionForce*(shaftDiameterInner+(keyWidth/2)))/((distanceBetweenUJointArms+(uJointArmThickness/2)));
+    % Calculate the torque transmitted and pin key reaction force 
+    torqueTransmitted = (tangentialForceRack*pinionDiameter)/2; % Nm
+    pinKeyReactionForce = torqueTransmitted/((shaftDiameterOuter/2)+(keyWidth/2)); % N
 
+    % Calculate the force on the secondary shaft from u joint
+    forceUJointSecondaryShaft = (pinKeyReactionForce*(shaftDiameterInner+(keyWidth/2)))/((distanceBetweenUJointArms+(uJointArmThickness/2)));  % N
 
-    % 155
-    forceAppliedPrimaryShaft =(forceUJointSecondaryShaft*((uJointArmThickness)+(distanceBetweenUJointArms/2)))/((shaftDiameterOuter)-(keyWidth/2));
+    % Calculate the force applied onto the primary shaft
+    forceAppliedPrimaryShaft =(forceUJointSecondaryShaft*((uJointArmThickness)+(distanceBetweenUJointArms/2)))/((shaftDiameterOuter)-(keyWidth/2));  % N
 
-    torqueFromShaft =forceAppliedPrimaryShaft*((shaftDiameterOuter/2)+(keyWidth/2));
-
-    momentOfInertia =(3.14)*(shaftDiameterOuter^4-shaftDiameterInner^4);
+    % Calculate the torque from the shaft & moment of inertia
+    torqueFromShaft =forceAppliedPrimaryShaft*((shaftDiameterOuter/2)+(keyWidth/2));  % Nm
+    momentOfInertia =(3.14)*(shaftDiameterOuter^4-shaftDiameterInner^4); % kg m^2
 
     stressConcentration = 1.3;
-
     shearYieldStrength =127600000; % Pa
 
-    shearStressPrimaryShaft = (16*stressConcentration*torqueFromShaft*(shaftDiameterOuter))/momentOfInertia;
-
+    % Calculate the safety factor of the steering shaft using the shear stress
+    shearStressPrimaryShaft = (16*stressConcentration*torqueFromShaft*(shaftDiameterOuter))/momentOfInertia; % Pa
     safetyFactorShaft =shearYieldStrength/shearStressPrimaryShaft;
 
 end
