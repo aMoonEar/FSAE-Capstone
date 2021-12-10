@@ -164,13 +164,15 @@ else
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
     % Checks which suspension feel type is selected and assigns its value to the corresponding variable
-    if (strcmp(suspensionFeel,'(0.25 (Soft)'))
+    if (strcmp(suspensionFeel,'0.25 (Soft)'))
         suspensionFeel = 0.25;
     elseif (strcmp(suspensionFeel,'0.75 (Stiff)'))
         suspensionFeel = 0.75;
     else 
         suspensionFeel = str2double(suspensionFeel);
     end
+    
+    disp(suspensionFeel);
     
     % Calling the design code with all inputted parameters
     DesignCode(driverWeight, corneringRadius, suspensionFeel);

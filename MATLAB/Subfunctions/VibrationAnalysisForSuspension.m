@@ -23,8 +23,8 @@ function [frontspringRateOfSuspension, frontdampingCoefficientOfSuspension, rear
     thetarear=(90.5*(3.14/180));   %radians 
 
     %Motion Ratio for Push Rod Geometry
-    frontmotionRatio=(a/b)*sin(theta1); 
-    rearmotionRatio=(a/b)*sin(theta2); 
+    frontmotionRatio=(a/b)*sin(thetafront); 
+    rearmotionRatio=(a/b)*sin(thetarear); 
                                                                                                       
     % Ride frequency, f Typical ride frequency for an FSAE car
     rideFrequency = 3.75; % Hz

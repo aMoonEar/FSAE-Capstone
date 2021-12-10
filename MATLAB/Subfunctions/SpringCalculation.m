@@ -16,7 +16,7 @@ function [meanCoilDiameter, wireDiameter, innerDiameterSpring, fullSolidDeflecti
 
     % Assumed initial values
     % Mean Coil Diameter, D
-    meanCoilDiameter = 32.5; % mm
+    meanCoilDiameter = 28; % mm
     % Wire Diameter, d
     wireDiameter = 5.5; % mm
     
@@ -112,7 +112,7 @@ function [meanCoilDiameter, wireDiameter, innerDiameterSpring, fullSolidDeflecti
     ultimateTensileStrength = A/wireDiameter^m; % Mpa
     
     % Torsional modulus of rupture
-    Ssu = 0.67*(UltimateTensileStrength); % N
+    Ssu = 0.67*(ultimateTensileStrength); % N
 
     % Torsional yield strength
     Ssy = 0.45*(ultimateTensileStrength); % N
@@ -176,7 +176,7 @@ function [meanCoilDiameter, wireDiameter, innerDiameterSpring, fullSolidDeflecti
     end
     
     % Determining the fatigue safety factor
-    fatiguesafetyfactor = _/shearstress_mplitude;
+    fatiguesafetyfactor = S_sa/shearstress_mplitude;
     
     % Determining the yielding safety factor
     yieldsafetyfactor = Ssy/solidShearStress;

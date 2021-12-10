@@ -45,7 +45,7 @@ function [rackLength, finalShaftDiameterInner] = calcSteering(...
     innerSteeringAngle,...
     coefficientRoad,...
     normalForceFrontStatic,...
-    shaftDiameterInner)
+    shaftDiameterInner);
 
     while safetyFactorShaft < 3.5
         shaftDiameterInner = shaftDiameterInner - 0.00025;
@@ -57,6 +57,8 @@ function [rackLength, finalShaftDiameterInner] = calcSteering(...
     end
     
     finalShaftDiameterInner = shaftDiameterInner;
+    disp("finalShaftDiameter");
+    disp(finalShaftDiameterInner);
     
 end
 
