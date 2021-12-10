@@ -1,21 +1,41 @@
-﻿"Front_Hoop_ID"= 22.5mm
-"D2@Sketch15"="Front_Hoop_ID"
-"Front_Bulkhead_IW"= 22.2mm
-"D4@Sketch18"="Front_Bulkhead_IW"
-"Front_Bulkhead_SupportLower_IW"= 22.2mm
-"D3@Sketch2"="Front_Bulkhead_SupportLower_IW"
-"Front_Bulkhead_Bracing_ID"= 23mm
-"D2@Sketch1"="Front_Bulkhead_Bracing_ID"
-"D2@Sketch110"="Front_Bulkhead_Bracing_ID"
-"Front_Bulkhead_Support_ID"= 23mm
-"Side_Impact_Structure_ID"= 22.2mm
-"D4@Sketch116" = "Side_Impact_Structure_ID"
-"D2@Sketch119" = "Side_Impact_Structure_ID"
-"Main_Hoop_Bracing_ID"= 23mm
-"D2@Sketch120"="Main_Hoop_Bracing_ID"
-"D2@Sketch121"="Main_Hoop_Bracing_ID"
-"Rear_Bulkhead_ID"= 22.2mm
-"D4@Sketch122"="Rear_Bulkhead_ID"
-"D2@Sketch123"="Rear_Bulkhead_ID"
-"Main_Hoop_ID"= 22.5mm
-"D2@Sketch125"="Main_Hoop_ID"
+"Front_Hoop_ID"= 18.5mm
+
+"D2@Sketch15"="Front_Hoop_ID"
+
+"Front_Bulkhead_IW"= 20.2mm
+
+"D4@Sketch18"="Front_Bulkhead_IW"
+
+"Front_Bulkhead_SupportLower_IW"= 20.2mm
+
+"D3@Sketch2"="Front_Bulkhead_SupportLower_IW"
+
+"Front_Bulkhead_Bracing_ID"= 23mm
+
+"D2@Sketch1"="Front_Bulkhead_Bracing_ID"
+
+"D2@Sketch110"="Front_Bulkhead_Bracing_ID"
+
+"Front_Bulkhead_Support_ID"= 23mm
+
+"Side_Impact_Structure_ID"= 20.2mm
+
+"D4@Sketch116" = "Side_Impact_Structure_ID"
+
+"D2@Sketch119" = "Side_Impact_Structure_ID"
+
+"Main_Hoop_Bracing_ID"= 23mm
+
+"D2@Sketch120"="Main_Hoop_Bracing_ID"
+
+"D2@Sketch121"="Main_Hoop_Bracing_ID"
+
+"Rear_Bulkhead_ID"= 20.2mm
+
+"D4@Sketch122"="Rear_Bulkhead_ID"
+
+"D2@Sketch123"="Rear_Bulkhead_ID"
+
+"Main_Hoop_ID"= 18.5mm
+
+"D2@Sketch125"="Main_Hoop_ID"

@@ -130,7 +130,7 @@ function DesignCode(driverWeight, corneringRadius, suspensionFeel)
     log_file = 'H:\\groupFSAE2\\Log\\groupFSAE2_LOG.TXT';
     shaft_file = 'H:\\groupABC\\SolidWorks\\Equations\\shaft.txt';
     
-    outputChassis(OutterradiustubeA, InnerradiustubeA, OutterWidthtubeB, InnerWidthtubeB);
+    outputChassis(InnerradiustubeA, InnerWidthtubeB);
      
 	%Write the equations file(s) (FILE(s) LINKED TO SOLIDWORKS).
 	%You can make a different file for each section of your project (ie one for steering, another for brakes, etc...)
