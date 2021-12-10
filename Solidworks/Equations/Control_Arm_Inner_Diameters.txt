@@ -1,0 +1,6 @@
+﻿"CA_ID"= 14
+"D2@Sketch5"="CA_ID"
+"D2@Sketch6"="CA_ID"
+"tube_end_to_ball_center" = 31.721675mm
+"D6@Sketch3"="tube_end_to_ball_center"
+"D5@Sketch3"="tube_end_to_ball_center"

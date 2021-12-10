@@ -1,0 +1,3 @@
+﻿"rack_length"= 200mm
+"rack_end_length"= - 0.5 * "rack_length" + 312.2mm
+"r_end_length@Sketch1"="rack_end_length"

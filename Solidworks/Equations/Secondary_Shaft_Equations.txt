@@ -1,0 +1,2 @@
+﻿"MinorShaftDiameter"= 24.0mm
+"D2@Sketch1"="MinorShaftDiameter"
