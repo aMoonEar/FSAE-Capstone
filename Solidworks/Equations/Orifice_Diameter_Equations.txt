@@ -1,2 +1,3 @@
-﻿"OrificeDiameter"= 1
-"D4@Sketch2"="OrificeDiameter"
+"OrificeDiameter"= 0.072684
+
+"D4@Sketch2"="OrificeDiameter"

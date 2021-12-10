@@ -1,0 +1,23 @@
+% =========================================================================
+%   Function: 
+%
+%   Parameters: 
+%   
+%   Outputs: 
+%
+%   Description:
+% =========================================================================
+function outputSpring(meanCoilDiameter, wireDiameter)
+
+    file = 'H:\\groupFSAE2\\SolidWorks\\Equations\\Spring_Equations.txt';
+    
+    %Write the equations file
+    fid = fopen(file,'w+t');
+    
+    fprintf(fid,strcat('"wireDiameter"= '," ",num2str(shaftDiameterInner), 'mm\n\n'));
+    fprintf(fid,strcat('"D2@Sketch1"="MinorShaftDiameter"'));
+
+    fclose(fid);
+
+end
+

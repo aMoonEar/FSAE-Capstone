@@ -1,3 +1,5 @@
-﻿"OuterHousingDiameter"= 30
-"InnerHousingDiameter"= 27
-"WallThickness" = 1.5
+"OuterHousingDiameter"= 30
+
+"InnerHousingDiameter"= 18.6
+
+"WallThickness" = 1.5
