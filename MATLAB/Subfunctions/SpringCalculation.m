@@ -12,7 +12,7 @@
 %   rear suspension conditions as well. The same spring and damper are used
 %   for both the front and rear of the vehicle
 % =========================================================================
-function [meanCoilDiameter, wireDiameter, innerDiameterSpring, fullSolidDeflection] = SpringCalculation(springRate, frontpushrodforce)
+function [meanCoilDiameter, wireDiameter, innerDiameterSpring, fullSolidDeflection, springrate_N_per_mm] = SpringCalculation(springRate, frontpushrodforce)
 
     % Assumed initial values
     % Mean Coil Diameter, D
@@ -22,7 +22,7 @@ function [meanCoilDiameter, wireDiameter, innerDiameterSpring, fullSolidDeflecti
     
     % Calling the function that calculates the safety factors and verifications for
     % ranges of design
-    [condSpringIndex, condActiveCoils, condStability, fatiguesafetyfactor, yieldsafetyfactor, fullSolidDeflection, innerDiameterSpring] = SpringSafetyFactors(meanCoilDiameter, wireDiameter, springRate, frontpushrodforce);
+    [condSpringIndex, condActiveCoils, condStability, fatiguesafetyfactor, yieldsafetyfactor, fullSolidDeflection, innerDiameterSpring, springrate_N_per_mm] = SpringSafetyFactors(meanCoilDiameter, wireDiameter, springRate, frontpushrodforce);
     
     % This variable is a flag which holds a false binary value (0 means false)
     keepLooping = 0;
@@ -73,7 +73,7 @@ function [meanCoilDiameter, wireDiameter, innerDiameterSpring, fullSolidDeflecti
     %   Description: Calculates all relevant safety factors based on the
     %   spring's parameters, and verifies that they are within the required ratios
     % ===========================================================================
-    function [condSpringIndex, condActiveCoils, condStability, fatiguesafetyfactor, yieldsafetyfactor, fullSolidDeflection, innerDiameterSpring] = SpringSafetyFactors(meanCoilDiameter, wireDiameter, springRate, frontpushrodforce)
+    function [condSpringIndex, condActiveCoils, condStability, fatiguesafetyfactor, yieldsafetyfactor, fullSolidDeflection, innerDiameterSpring, springrate_N_per_mm] = SpringSafetyFactors(meanCoilDiameter, wireDiameter, springRate, frontpushrodforce)
     
     % Material: 302 Stainless Wire - Peened
     

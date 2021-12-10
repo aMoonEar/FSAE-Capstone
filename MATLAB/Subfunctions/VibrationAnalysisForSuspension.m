@@ -14,7 +14,7 @@
 %   as well as the damping coefficient for the shock absorber's damper;
 %   using vibration analysis, using the model illustrated in the Analysis Report.
 % =========================================================================
-function [frontspringRateOfSuspension, frontdampingCoefficientOfSuspension, rearspringRateOfSuspension, reardampingCoefficientOfSuspension] = VibrationAnalysisForSuspension(dampingRatio, frontunsprungCornerMass,rearunsprungCornerMass,sprungCornerMassperWheel, frontmotionRatio, rearmotionRatio)
+function [frontspringRateOfSuspension, frontdampingCoefficientOfSuspension, rearspringRateOfSuspension, reardampingCoefficientOfSuspension] = VibrationAnalysisForSuspension(dampingRatio, frontunsprungCornerMass,rearunsprungCornerMass)
 
     %Defining rocker geometry to determine the Motion Ratio of the Vehicle
     a=0.06125; %m

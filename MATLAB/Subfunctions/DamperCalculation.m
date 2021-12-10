@@ -17,7 +17,7 @@
 %   Calculations from the SpringCalculation file and the SuspensionForceCalculation 
 %   Files respectively.
 % =========================================================================
-function [damperwallThickness , innerHousingDiameterOfDamper, orificeDiameter, forceOnDamper] = DamperCalculation(dampingCoefficientSuspension, forceOnDamper, fullSolidDeflection, innerDiameterSpring, frontpushrodforce, springrate_N_per_mm )
+function [damperwallThickness , innerHousingDiameterOfDamper, orificeDiameter, forceOnDamper] = DamperCalculation(dampingCoefficientSuspension, fullSolidDeflection, innerDiameterSpring, frontpushrodforce, springrate_N_per_mm )
 
 % This is the range of motion of the shock absorber (damper and spring)
 % used for the navier-stokes function this value is derived from the 
