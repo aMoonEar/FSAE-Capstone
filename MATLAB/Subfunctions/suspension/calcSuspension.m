@@ -20,30 +20,35 @@ function [innerDiameter, damperwallThickness, innerHousingDiameterOfDamper, orif
     rearBias,...
     dampingRatio)
 
-    FxFront = -FxFront;
-    FxRear = -FxRear;
-    FzFront = -FzFront;
-    FzRear = -FzRear;
+    % Correct the directions of the forces for analysis
+    FxFront = -FxFront; % N
+    FxRear = -FxRear; % N
+    FzFront = -FzFront; % N
+    FzRear = -FzRear; % N
 
     distanceToWheelCenter = 225.27; %mm
 
-    frontunsprungCornerMass =sprungMass*frontBias/2;
-    rearunsprungCornerMass=sprungMass*rearBias/2;
+    frontunsprungCornerMass =sprungMass*frontBias/2; % kg
+    rearunsprungCornerMass=sprungMass*rearBias/2; % kg
     
+    % Calculate the reaction suspension forces in the front
     [outputForcesFront] = calcFrontMatrix(...
     distanceToWheelCenter,...
     FxFront,...
     FyFront,...
     FzFront);
 
-    frontpushrodforce = abs(outputForcesFront(6));
+    % Isolate the push rod force in the front
+    frontpushrodforce = abs(outputForcesFront(6)); % N
 
+    % Calculate the reaction suspension forces in the rear
     [outputForcesRear] = calcRearMatrix(...
     distanceToWheelCenter,...
     FxRear,...
     FyRear,...
     FzRear);
 
+    % Set the initial and inner and outer diameter
     innerDiameter = 19; % mm
     outerDiameter = 20; %mm
     
@@ -61,8 +66,10 @@ function [innerDiameter, damperwallThickness, innerHousingDiameterOfDamper, orif
     innerDiameter,...
     outerDiameter);
 
+    % Find the minimum safety factor calculated
     minSafetyFactor = min([safetyFactorCriticalLoadFront, safetyFactorAxialStressFront, safetyFactorCriticalLoadRear, safetyFactorAxialStressRear]);
     
+    % Iterate and increase the thickness of the tubes until the minimum safety factor is 6
     while minSafetyFactor < 6
         innerDiameter = innerDiameter - 0.1;
         
@@ -80,18 +87,20 @@ function [innerDiameter, damperwallThickness, innerHousingDiameterOfDamper, orif
         innerDiameter,...
         outerDiameter);
 
+        % Find the minimum safety factor
         minSafetyFactor = min([safetyFactorCriticalLoadFront, safetyFactorAxialStressFront, safetyFactorCriticalLoadRear, safetyFactorAxialStressRear]);
     end
     
+    % Complete the vibrational analysis
     [frontspringRateOfSuspension, frontdampingCoefficientOfSuspension, rearspringRateOfSuspension, reardampingCoefficientOfSuspension] = VibrationAnalysisForSuspension(...
         dampingRatio,...
         frontunsprungCornerMass,...
         rearunsprungCornerMass);
     
+    % Complete the spring calculations
     [meanCoilDiameter, wireDiameter, innerDiameterSpring, fullSolidDeflection, springrate_N_per_mm] = SpringCalculation(frontspringRateOfSuspension, frontpushrodforce)
     
-    
-    
+    % Complete the damper calculations
     [damperwallThickness , innerHousingDiameterOfDamper, orificeDiameter, forceOnDamper] = DamperCalculation(...
         frontdampingCoefficientOfSuspension,...
         fullSolidDeflection,...
