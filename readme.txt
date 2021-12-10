@@ -29,13 +29,13 @@ When the parameters are generated, the main differences can be found in the foll
 Solidworks\Steering\Updated Steering\Steering Rack and Pinion\Rack and Pinion
 
 Solidworks\Suspension\SubAssemblies\Shock_Absorber_Assembly
-Solidworks\Suspension\SubAssembliesFLCALeft_Assembly
-Solidworks\Suspension\SubAssembliesFLCARight_Assembly
-Solidworks\Suspension\SubAssembliesFPushrod_Assembly
-Solidworks\Suspension\SubAssembliesFUCA_Assembly
-Solidworks\Suspension\SubAssembliesRLCALeft_Assembly
-Solidworks\Suspension\SubAssembliesRLCARight_Assembly
-Solidworks\Suspension\SubAssembliesRPushrod_Assembly
+Solidworks\Suspension\SubAssemblies\FLCALeft_Assembly
+Solidworks\Suspension\SubAssemblies\FLCARight_Assembly
+Solidworks\Suspension\SubAssemblies\FPushrod_Assembly
+Solidworks\Suspension\SubAssemblies\FUCA_Assembly
+Solidworks\Suspension\SubAssemblies\RLCALeft_Assembly
+Solidworks\Suspension\SubAssemblies\RLCARight_Assembly
+Solidworks\Suspension\SubAssemblies\RPushrod_Assembly
 
 Solidworks\Chassis with Panels
 
